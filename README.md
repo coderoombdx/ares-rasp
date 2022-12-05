@@ -3,7 +3,4 @@
 
 ## Backend api
 
-GET http://localhost:8090/api/jeu
-
-Retourne l'état général du jeu
-
+Tous les verbes et ressources disponibles sont testable en lançant launcher.sh dans le repertoire d'integration

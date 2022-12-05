@@ -15,17 +15,19 @@ class CompteAReboursApi(
 ) {
     @PostMapping("/api/compteARebours")
     fun updateCompteARebours(
-        @RequestBody deltaInSeconds: Int?
+        @RequestBody compteARebours: CompteARebours?
     ): ResponseEntity<Any> {
-        serviceCompterARebours.updateCompteARebours(deltaInSeconds)
+        serviceCompterARebours.updateCompteARebours(compteARebours?.delta)
         return ResponseEntity(HttpStatus.OK)
     }
 
     @DeleteMapping("/api/compteARebours")
-    fun resetCompteARebours(
-        @RequestBody deltaInSeconds: Int?
-    ): ResponseEntity<Any> {
+    fun resetCompteARebours(): ResponseEntity<Any> {
         serviceCompterARebours.resetCompteARebours()
         return ResponseEntity(HttpStatus.OK)
     }
 }
+
+data class CompteARebours(
+    val delta: Int? = null,
+)

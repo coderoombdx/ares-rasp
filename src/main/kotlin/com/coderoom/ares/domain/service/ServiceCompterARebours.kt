@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class ServiceCompterARebours {
 
     companion object {
-        private const val oneSecond = 1
+        private const val oneMinute = 60
     }
 
     fun manageTime() {
@@ -17,7 +17,7 @@ class ServiceCompterARebours {
     }
 
     fun updateCompteARebours(deltaInSecond: Int? = null) {
-        val compteARebours = StoreSingleton.compteARebours + (deltaInSecond ?: -oneSecond)
+        val compteARebours = StoreSingleton.compteARebours + (deltaInSecond ?: -oneMinute)
 
         if (compteARebours < 0) {
             StoreSingleton.compteARebours = 0
