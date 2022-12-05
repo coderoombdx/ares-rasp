@@ -5,7 +5,7 @@ import com.coderoom.ares.domain.model.TableauCommande
 
 interface StoreRepository {
 
-    fun getEtatJeu() : Jeu
+    fun getJeu(): Jeu
     fun manageCompteARebours()
     fun setTableauCommandeData(statutTableauCommande: TableauCommande)
 }

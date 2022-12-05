@@ -1,41 +1,41 @@
-package com.coderoom.ares.adapter
+package com.coderoom.ares.adapter.store
 
-import com.coderoom.ares.adapter.store.StoreRepository
-import com.coderoom.ares.domain.model.Jeu
-import com.coderoom.ares.domain.model.Station
+import com.coderoom.ares.TimeConstants
+import com.coderoom.ares.domain.model.OnOff
+import com.coderoom.ares.domain.model.OnOff.Off
+import com.coderoom.ares.domain.model.OnOff.On
+import com.coderoom.ares.domain.model.OuvertFerme
+import com.coderoom.ares.domain.model.OuvertFerme.Ferme
 import com.coderoom.ares.domain.model.TableauCommande
 import org.springframework.stereotype.Repository
 
 @Repository
 class InMemoryStoreRepository : StoreRepository {
-    override fun getEtatJeu() = StoreSingleton.toEtatJeu()
+    override fun getJeu() = StoreSingleton.toJeu()
 
     override fun manageCompteARebours() {
         StoreSingleton.compteARebours--
     }
 
     override fun setTableauCommandeData(statutTableauCommande: TableauCommande) {
-        StoreSingleton.storeStation.lumiereGeneraleAllumee = statutTableauCommande.lumiereStationAllume
+        StoreSingleton.electriciteGenerale = if (statutTableauCommande.lumiereStationAllume) On else Off
     }
 
 }
 
-internal fun StoreSingleton.toEtatJeu() = Jeu(
-    compteARebours = this.compteARebours,
-    station = Station(
-        lumiereGeneraleAllumee = this.storeStation.lumiereGeneraleAllumee,
-    ),
-)
-
-private const val minutesPerHour = 60
-private const val secondsPerMinute = 60
-private const val onSecond = 1000
-
 object StoreSingleton {
-    var compteARebours = 45 * minutesPerHour * secondsPerMinute * onSecond
-    val storeStation = StoreStation
+    var compteARebours: Int = TimeConstants.gameDuration
+    var dernierMessage: String = ""
+    var electriciteGenerale: OnOff = Off
+    var derniereAlarme: Int = 0
+    val scenario1: StoreScenario1 = StoreScenario1
+    val scenario2: StoreScenario2 = StoreScenario2
 }
 
-object StoreStation {
-    var lumiereGeneraleAllumee: Boolean = false
+object StoreScenario1 {
+    var porte1: OuvertFerme = Ferme
+}
+
+object StoreScenario2 {
+    var porte1: OuvertFerme = Ferme
 }
