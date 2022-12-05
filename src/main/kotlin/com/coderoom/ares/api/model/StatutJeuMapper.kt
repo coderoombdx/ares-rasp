@@ -6,7 +6,8 @@ import com.coderoom.ares.api.model.Scenario1 as Scenario1ApiModel
 import com.coderoom.ares.api.model.Scenario2 as Scenario2ApiModel
 
 
-fun Jeu.toApiModel() = JeuApiModel(
+fun Jeu.toApiModel(currentTimeMillis: Long) = JeuApiModel(
+    timestampFinDuJeu = (currentTimeMillis / 1000) + this.compteARebours,
     compteARebours = this.compteARebours,
     dernierMessage = this.dernierMessage,
     electriciteGenerale = this.electriciteGenerale.toApiModel(),

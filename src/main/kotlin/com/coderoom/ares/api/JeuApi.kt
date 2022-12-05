@@ -14,6 +14,6 @@ class JeuApi(
 ) {
     @GetMapping("/api/jeu")
     fun allStatus(): ResponseEntity<Any> {
-        return ResponseEntity(storeRepository.getJeu().toApiModel(), HttpStatus.OK)
+        return ResponseEntity(storeRepository.getJeu().toApiModel(System.currentTimeMillis()), HttpStatus.OK)
     }
 }
