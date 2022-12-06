@@ -2,7 +2,7 @@ package com.coderoom.ares.domain.model
 
 data class Jeu(
     val compteARebours: Int,
-    val dernierMessage: String,
+    val messageAide: String?,
     val electriciteGenerale: OnOff,
     val derniereAlarme: Int,
     val scenario1: Scenario1,

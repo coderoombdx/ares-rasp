@@ -9,7 +9,7 @@ import com.coderoom.ares.api.model.Scenario2 as Scenario2ApiModel
 fun Jeu.toApiModel(currentTimeMillis: Long) = JeuApiModel(
     timestampFinDuJeu = (currentTimeMillis / 1000) + this.compteARebours,
     compteARebours = this.compteARebours,
-    dernierMessage = this.dernierMessage,
+    messageAide = this.messageAide,
     electriciteGenerale = this.electriciteGenerale.toApiModel(),
     derniereAlarme = this.derniereAlarme,
     scenario1 = Scenario1ApiModel(

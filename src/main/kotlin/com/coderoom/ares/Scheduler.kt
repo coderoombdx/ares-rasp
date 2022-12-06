@@ -2,7 +2,7 @@ package com.coderoom.ares
 
 import com.coderoom.ares.adapter.store.InMemoryStoreRepository
 import com.coderoom.ares.adapter.tableauCommande.TableauCommandeArduinoRepository
-import com.coderoom.ares.domain.service.ServiceCompterARebours
+import com.coderoom.ares.domain.service.ServiceGestionDuTemps
 import org.springframework.context.annotation.Configuration
 import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.scheduling.annotation.Scheduled
@@ -12,11 +12,11 @@ import org.springframework.scheduling.annotation.Scheduled
 class Scheduler(
     private val inMemoryStoreRepository: InMemoryStoreRepository,
     private val tableauCommandeArduinoRepository: TableauCommandeArduinoRepository,
-    private val serviceCompterARebours: ServiceCompterARebours,
+    private val serviceGestionDuTemps: ServiceGestionDuTemps,
 ) {
     @Scheduled(fixedRate = TimeConstants.millisPerSecond, initialDelay = 10 * TimeConstants.millisPerSecond)
     private fun readAndStoreIncomingData() {
-        serviceCompterARebours.manageTime()
+        serviceGestionDuTemps.gereLeTemps()
         inMemoryStoreRepository.setTableauCommandeData(tableauCommandeArduinoRepository.readData())
     }
 }
