@@ -52,6 +52,10 @@ class InMemoryStoreRepository : StoreRepository {
         StoreSingleton.derniereAlarme++
     }
 
+    override fun resetDerniereAlarme() {
+        StoreSingleton.derniereAlarme = 0
+    }
+
     override fun getMessageAideTTL(): Int {
         return StoreSingleton.messageAideTTL
     }
@@ -71,10 +75,10 @@ private object StoreSingleton {
     val scenario2: StoreScenario2 = StoreScenario2
 }
 
-object StoreScenario1 {
+private object StoreScenario1 {
     var porte1: OuvertFerme = Ferme
 }
 
-object StoreScenario2 {
+private object StoreScenario2 {
     var porte1: OuvertFerme = Ferme
 }

@@ -46,5 +46,10 @@ class ServiceGestionDuTemps(
 
     fun resetCompteARebours() {
         repository.setCompteARebours(TimeConstants.gameDuration)
+        repository.resetDerniereAlarme()
+    }
+
+    fun resetAlarme() {
+        repository.resetDerniereAlarme()
     }
 }

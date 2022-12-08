@@ -17,4 +17,5 @@ interface StoreRepository {
     fun setMessageAideTTL(value: Int)
 
     fun incDerniereAlarme()
+    fun resetDerniereAlarme()
 }

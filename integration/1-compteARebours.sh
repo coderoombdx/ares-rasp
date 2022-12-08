@@ -9,14 +9,14 @@ echo "3. change le temps restant"
 read -r respons
 case "$respons" in
 	1)
-    hurl --variable "$BASE_URL" --location test/compteARebours/reset.hurl
+    hurl --variable "$BASE_URL" test/compteARebours/reset.hurl
 		;;
 	2)
-    hurl --variable "$BASE_URL" --location test/compteARebours/augmenteTemps.hurl
+    hurl --variable "$BASE_URL" test/compteARebours/augmenteTemps.hurl
 		;;
 	3)
 	  echo -n "temps : "
 	  read -r temps
-    hurl --variable "$BASE_URL" --variable "TEMPS=${temps}" --location test/compteARebours/changeTemps.hurl
+    hurl --variable "$BASE_URL" --variable "TEMPS=${temps}" test/compteARebours/changeTemps.hurl
 		;;
 esac

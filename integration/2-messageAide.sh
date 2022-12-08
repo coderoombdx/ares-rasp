@@ -11,9 +11,9 @@ case "$respons" in
 	  echo -n "message : "
     read -r message
 
-    hurl --variable "$BASE_URL" --location --variable "MESSAGE=${message}" test/messageAide/changeMessage.hurl
+    hurl --variable "$BASE_URL" --variable "MESSAGE=${message}" test/messageAide/changeMessage.hurl
 		;;
 	2)
-    hurl --variable "$BASE_URL" --location test/messageAide/resetMessage.hurl
+    hurl --variable "$BASE_URL" test/messageAide/resetMessage.hurl
 		;;
 esac

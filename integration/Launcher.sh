@@ -7,6 +7,7 @@ while true; do
   echo "0. Afficher etat du jeu"
   echo "1. Gestion du temps"
   echo "2. Gestion des messages d'aide"
+  echo "3. Gestion des alarmes"
 
   echo -n ">"
   read -r respons
@@ -19,6 +20,9 @@ while true; do
 		  ;;
 	  2)
       ./2-messageAide.sh
+		  ;;
+	  3)
+      ./3-alarmes.sh
 		  ;;
   esac
   echo -n ">"
