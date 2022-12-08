@@ -8,6 +8,7 @@ while true; do
   echo "1. Gestion du temps"
   echo "2. Gestion des messages d'aide"
 
+  echo -n ">"
   read -r respons
   case "$respons" in
 	  0)
@@ -20,6 +21,6 @@ while true; do
       ./2-messageAide.sh
 		  ;;
   esac
-  echo -n "Entrer"
+  echo -n ">"
   read -r
 done
