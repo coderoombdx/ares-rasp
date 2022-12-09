@@ -1,0 +1,13 @@
+{
+  "compteARebours": 2700,
+  "timestampFinDuJeu": 1670601296,
+  "messageAide": null,
+  "electriciteGenerale": "OFF",
+  "derniereAlarme": 0,
+  "scenario1": {
+    "porte1": "FERME"
+  },
+  "scenario2": {
+    "porte1": "FERME"
+  }
+}
