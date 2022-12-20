@@ -8,6 +8,7 @@ while true; do
   echo "1. Gestion du temps"
   echo "2. Gestion des messages d'aide"
   echo "3. Gestion des alarmes"
+  echo "4. Gestion du drone"
 
   echo -n ">"
   read -r respons
@@ -23,6 +24,9 @@ while true; do
 		  ;;
 	  3)
       ./3-alarmes.sh
+		  ;;
+	  4)
+      ./4-drone.sh
 		  ;;
   esac
   echo -n ">"
