@@ -23,7 +23,7 @@ class TableauCommandeArduinoRepository : TableauCommandeRepository {
     }
 
     override fun readData(): TableauCommande {
-        val data = if (serialPort.isOpen) {
+        if (serialPort.isOpen) {
             try {
                 if (serialPort.bytesAvailable() != 0) {
                     do {
@@ -41,7 +41,7 @@ class TableauCommandeArduinoRepository : TableauCommandeRepository {
                 listOf()
             }
         } else {
-            logger.info("Serial port ${serialPort.systemPortName} is not opened")
+//            logger.info("Serial port ${serialPort.systemPortName} is not opened")
             listOf()
         }
 

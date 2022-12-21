@@ -15,7 +15,7 @@ class ServiceGestionDuTemps(
     }
 
     fun gereLeTemps() {
-        updateCompteARebours(-1)
+        updateCompteARebours(-oneSecond)
         updateMessageAide()
         updateDerniereAlarme()
     }

@@ -77,7 +77,7 @@ internal class ServiceGestionDuTempsShould {
 
             serviceCompterARebours.updateMessageAide()
 
-            assertEquals(9, inMemoryStoreRepository.getMessageAideTTL())
+            assertEquals(TimeConstants.messageTTL - 1, inMemoryStoreRepository.getMessageAideTTL())
             assertEquals("message", inMemoryStoreRepository.getJeu().messageAide)
         }
 

@@ -4,6 +4,7 @@ import com.coderoom.ares.domain.service.ServiceMessage
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -19,6 +20,13 @@ class MessageApi(
         @RequestBody message: Message?
     ): ResponseEntity<Any> {
         serviceMessage.updateMessage(message?.aide)
+        return ResponseEntity(HttpStatus.OK)
+    }
+
+    @GetMapping("/api/messageAide")
+    fun updateMessage(
+    ): ResponseEntity<Any> {
+        serviceMessage.updateMessage("test integration unreal")
         return ResponseEntity(HttpStatus.OK)
     }
 }
