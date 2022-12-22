@@ -21,6 +21,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation(files("lib/JserialComm/jSerialComm-2.6.2.jar"))
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.mockk:mockk:1.13.3")
