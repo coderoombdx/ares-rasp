@@ -40,11 +40,7 @@ class DroneApi(
         summary = "Réinitialise le vol, même s'il est en cours. Attention au crash, replacer le drone à son point de départ",
         description = "200"
     )
-    @ApiResponses(
-        value = [
-            ApiResponse(responseCode = "200", description = "Vol Réinitialisé"),
-        ]
-    )
+    @ApiResponses(value = [ApiResponse(responseCode = "200", description = "Vol Réinitialisé")])
     @DeleteMapping
     fun resetFlight(): ResponseEntity<Any> {
         droneRepository.relanceVol()

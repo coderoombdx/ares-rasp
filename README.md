@@ -1,8 +1,31 @@
 # Mission Ares Backend
 
-## Backend api
+## Principes/Architectures
 
-Tous les verbes et ressources disponibles sont testable en lançant launcher.sh dans le repertoire d'integration
+Le backend de mission ares permet de entraliser les traitement et d'intéragir avec les fronts (unreal et admin js) et
+différents équipements (drone, arduino...)
+
+## Fonctionnalités
+
+Le backend de mission ares permet :
+
+- d'obtenir un état du jeu
+- de lancer le jeu et gérer le compte à rebours
+- de mettre à disposition des messages d'aide
+- de positionner une alarme
+- de lancer le drone
+
+## Schema d'architecture
+
+## Swagger
+
+Un swagger permet de voir l'ensemble de ressources et verbes disponibles sur le server
+
+En local, utiliser http://localhost:8090/swagger-ui/index.html
+
+## Hurl
+
+Il est également possible d'interagir avec le server au moyen launcher.sh dans le repertoire d'integration
 
 Exemple depuis la racine du projet :
 
