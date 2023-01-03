@@ -26,6 +26,7 @@ class DroneApi(
             ApiResponse(responseCode = "304", description = "le vol est en cours"),
         ]
     )
+
     @PostMapping
     fun launchFlight(): ResponseEntity<Any> {
         val returnStatus = if (droneRepository.lanceVol()) {

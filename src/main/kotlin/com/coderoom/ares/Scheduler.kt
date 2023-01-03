@@ -20,7 +20,6 @@ class Scheduler(
     private fun readAndStoreIncomingData() {
         serviceGestionDuTemps.gereLeTemps()
         inMemoryStoreRepository.setTableauCommandeData(tableauCommandeArduinoRepository.readData())
-        droneRepository.vole()
     }
 }
 
