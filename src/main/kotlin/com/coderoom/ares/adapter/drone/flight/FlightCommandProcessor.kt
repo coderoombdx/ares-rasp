@@ -1,5 +1,9 @@
 package com.coderoom.ares.adapter.drone.flight
 
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
 class FlightCommandProcessor {
     private val queue = mutableListOf<FlightCommand>()
 
@@ -7,8 +11,11 @@ class FlightCommandProcessor {
         queue.add(flightCommand)
     }
 
-    fun processCommand(): FlightCommandProcessor = apply {
-        queue.forEach { it.execute() }
-        queue.clear()
+    @OptIn(DelicateCoroutinesApi::class)
+    fun asyncProcessCommand(): FlightCommandProcessor = apply {
+        GlobalScope.launch {
+            queue.forEach { it.execute() }
+            queue.clear()
+        }
     }
 }

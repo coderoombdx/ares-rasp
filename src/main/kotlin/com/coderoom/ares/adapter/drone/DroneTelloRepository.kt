@@ -3,6 +3,7 @@ package com.coderoom.ares.adapter.drone
 import com.coderoom.ares.adapter.drone.flight.FlightCommandProcessor
 import com.coderoom.ares.adapter.drone.flight.commands.FlightCommandForward
 import com.coderoom.ares.adapter.drone.flight.commands.FlightCommandLanding
+import com.coderoom.ares.adapter.drone.flight.commands.FlightCommandStart
 import com.coderoom.ares.adapter.drone.flight.commands.FlightCommandStop
 import com.coderoom.ares.adapter.drone.flight.commands.FlightCommandTakeoff
 import org.springframework.stereotype.Repository
@@ -14,22 +15,18 @@ class DroneTelloRepository : DroneRepository {
         return if (TelloDriver.launched) {
             false
         } else {
-            TelloDriver.launched = true
             FlightCommandProcessor()
-                .addCommand(FlightCommandTakeoff(2000L))
-                .addCommand(FlightCommandForward(2000L))
-                .addCommand(FlightCommandLanding(2000L))
-                .addCommand(FlightCommandStop())
-                .processCommand()
+                .addCommand(FlightCommandStart(TelloDriver))
+                .addCommand(FlightCommandTakeoff(TelloDriver, 4000L))
+                .addCommand(FlightCommandForward(TelloDriver, 4000L))
+                .addCommand(FlightCommandLanding(TelloDriver, 4000L))
+                .addCommand(FlightCommandStop(TelloDriver))
+                .asyncProcessCommand()
             true
         }
     }
 
-    override fun relanceVol() {
-        TelloDriver.launched = false
-    }
-
-    private object TelloDriver {
+    object TelloDriver {
         var launched = false
     }
 }

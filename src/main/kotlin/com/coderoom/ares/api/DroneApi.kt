@@ -7,7 +7,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -35,16 +34,5 @@ class DroneApi(
             HttpStatus.NOT_MODIFIED
         }
         return ResponseEntity(returnStatus)
-    }
-
-    @Operation(
-        summary = "Réinitialise le vol, même s'il est en cours. Attention au crash, replacer le drone à son point de départ",
-        description = "200"
-    )
-    @ApiResponses(value = [ApiResponse(responseCode = "200", description = "Vol Réinitialisé")])
-    @DeleteMapping
-    fun resetFlight(): ResponseEntity<Any> {
-        droneRepository.relanceVol()
-        return ResponseEntity(HttpStatus.OK)
     }
 }
