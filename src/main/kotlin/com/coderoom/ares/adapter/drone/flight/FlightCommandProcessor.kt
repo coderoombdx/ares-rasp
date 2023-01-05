@@ -12,10 +12,11 @@ class FlightCommandProcessor {
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    fun asyncProcessCommand(): FlightCommandProcessor = apply {
+    fun asyncProcessCommand(externalFunction: () -> Unit): FlightCommandProcessor = apply {
         GlobalScope.launch {
             queue.forEach { it.execute() }
             queue.clear()
+            externalFunction()
         }
     }
 }

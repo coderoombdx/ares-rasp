@@ -1,7 +1,9 @@
 package com.coderoom.ares.adapter.drone.flight
 
 import java.io.IOException
-import java.net.*
+import java.net.DatagramPacket
+import java.net.DatagramSocket
+import java.net.InetAddress
 
 class TelloDriver {
     companion object {
@@ -10,7 +12,6 @@ class TelloDriver {
         val speedRange = 1..100
         val rcRange = -100..100
         var invalidArgString = "Command argument not in range!"
-        var isLaunched = false
     }
 
     private lateinit var socket: DatagramSocket
@@ -18,9 +19,6 @@ class TelloDriver {
 
     val isConnected: Boolean
         get() = socket.isConnected
-
-    val isLaunched: Boolean
-        get() = this.isLaunched
 
     @Throws(IOException::class)
     fun read(info: Info) = sendCommand(info.type)

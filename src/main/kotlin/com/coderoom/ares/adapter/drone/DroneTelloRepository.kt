@@ -16,23 +16,33 @@ class DroneTelloRepository : DroneRepository {
     val tello = TelloDriver()
     override fun lanceVol(): Boolean {
 
-        return if (TelloSemaphore.launched) {
+        return if (TelloSemaphore.lock()) {
             false
         } else {
-            TelloSemaphore.launched = true
             FlightCommandProcessor()
                 .addCommand(FlightCommandStart(tello))
                 .addCommand(FlightCommandTakeoff(tello, 4000L))
                 .addCommand(FlightCommandForward(tello, 4000L))
                 .addCommand(FlightCommandLanding(tello))
-                .addCommand(FlightCommandStop(tello))
-                .asyncProcessCommand()
+                .addCommand(FlightCommandStop())
+                .asyncProcessCommand { TelloSemaphore.release() }
             true
         }
     }
 
     object TelloSemaphore {
-        var launched = false
+        private var launched = false
+
+        @Synchronized
+        fun lock(): Boolean {
+            val previousState = launched
+            launched = true
+            return previousState
+        }
+
+        fun release() {
+            launched = false
+        }
     }
 }
 
