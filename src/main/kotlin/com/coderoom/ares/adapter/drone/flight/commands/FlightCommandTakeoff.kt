@@ -1,18 +1,22 @@
 package com.coderoom.ares.adapter.drone.flight.commands
 
-import com.coderoom.ares.adapter.drone.DroneTelloRepository
 import com.coderoom.ares.adapter.drone.flight.FlightCommand
-import org.slf4j.Logger
+import com.coderoom.ares.adapter.drone.flight.TelloDriver
 import org.slf4j.LoggerFactory
 
 class FlightCommandTakeoff(
-    private val telloDriver: DroneTelloRepository.TelloDriver,
+    private val telloDriver: TelloDriver,
     private val delayInMillis: Long
 ) : FlightCommand {
-    private val logger: Logger = LoggerFactory.getLogger(javaClass)
+    private val logger = LoggerFactory.getLogger(javaClass)
 
     override fun execute() {
-        logger.info(javaClass.toString())
+        logger.info("Execute")
+
+        if(telloDriver.isConnected)
+        {
+            telloDriver.takeOff()
+        }
         Thread.sleep(delayInMillis)
     }
 }
