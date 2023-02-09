@@ -18,4 +18,6 @@ interface StoreRepository {
 
     fun incDerniereAlarme()
     fun resetDerniereAlarme()
+    fun ouvrePorte(idPorte: String, code: String?): Boolean
+    fun fermePorte(idPorte: String, code: String?): Boolean
 }

@@ -6,7 +6,6 @@ import com.coderoom.ares.domain.model.OnOff
 import com.coderoom.ares.domain.model.OnOff.Off
 import com.coderoom.ares.domain.model.OnOff.On
 import com.coderoom.ares.domain.model.OuvertFerme
-import com.coderoom.ares.domain.model.OuvertFerme.Ferme
 import com.coderoom.ares.domain.model.Scenario1
 import com.coderoom.ares.domain.model.Scenario2
 import com.coderoom.ares.domain.model.TableauCommande
@@ -20,7 +19,7 @@ class InMemoryStoreRepository : StoreRepository {
         electriciteGenerale = StoreSingleton.electriciteGenerale,
         derniereAlarme = StoreSingleton.derniereAlarme,
         scenario1 = Scenario1(
-            porte1 = StoreSingleton.scenario1.porte1
+            porteExterieure = StoreSingleton.scenario1.porteExterieure
         ),
         scenario2 = Scenario2(
             porte1 = StoreSingleton.scenario2.porte1
@@ -56,6 +55,24 @@ class InMemoryStoreRepository : StoreRepository {
         StoreSingleton.derniereAlarme = 0
     }
 
+    override fun ouvrePorte(idPorte: String, code: String?): Boolean {
+        return if (idPorte == "porteExterieure" && code == "1234") {
+            StoreSingleton.scenario1.porteExterieure = OuvertFerme.Ouvert
+            true
+        } else {
+            false
+        }
+    }
+
+    override fun fermePorte(idPorte: String, code: String?): Boolean {
+        return if (idPorte == "porteExterieure") {
+            StoreSingleton.scenario1.porteExterieure = OuvertFerme.Ferme
+            true
+        } else {
+            false
+        }
+    }
+
     override fun getMessageAideTTL(): Int {
         return StoreSingleton.messageAideTTL
     }
@@ -76,9 +93,9 @@ private object StoreSingleton {
 }
 
 private object StoreScenario1 {
-    var porte1: OuvertFerme = Ferme
+    var porteExterieure: OuvertFerme = OuvertFerme.Ferme
 }
 
 private object StoreScenario2 {
-    var porte1: OuvertFerme = Ferme
+    var porte1: OuvertFerme = OuvertFerme.Ferme
 }

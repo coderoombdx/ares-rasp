@@ -13,7 +13,7 @@ fun Jeu.toApiModel(currentTimeMillis: Long) = JeuApiModel(
     electriciteGenerale = this.electriciteGenerale.toApiModel(),
     derniereAlarme = this.derniereAlarme,
     scenario1 = Scenario1ApiModel(
-        porte1 = this.scenario1.porte1.toApiModel()
+        porte1 = this.scenario1.porteExterieure.toApiModel()
     ),
     scenario2 = Scenario2ApiModel(
         porte1 = this.scenario2.porte1.toApiModel()

@@ -7,7 +7,7 @@ internal class JeuMock {
             messageAide = "message",
             electriciteGenerale = OnOff.On,
             derniereAlarme = 0,
-            scenario1 = Scenario1(porte1 = OuvertFerme.Ouvert),
+            scenario1 = Scenario1(porteExterieure = OuvertFerme.Ouvert),
             scenario2 = Scenario2(porte1 = OuvertFerme.Ferme)
         )
     }
