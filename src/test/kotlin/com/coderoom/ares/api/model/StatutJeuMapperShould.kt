@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 
 internal class StatutJeuMapperShould {
     @Test
-    internal fun name() {
+    internal fun `retourne le temps restant pour finir le jeu`() {
         val currentTimeInMillis = 1670256557L
         val jeu = JeuMock.default().copy(compteARebours = 10)
 

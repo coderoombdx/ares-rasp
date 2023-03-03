@@ -1,16 +1,12 @@
 package com.coderoom.ares.adapter.store
 
 import com.coderoom.ares.domain.model.Jeu
-import com.coderoom.ares.domain.model.TableauCommande
 
 interface StoreRepository {
 
     fun getJeu(): Jeu
 
-    fun getCompteARebours(): Int
     fun setCompteARebours(valeur: Int)
-
-    fun setTableauCommandeData(statutTableauCommande: TableauCommande)
 
     fun setMessageAide(value: String?)
     fun getMessageAideTTL(): Int
@@ -18,6 +14,13 @@ interface StoreRepository {
 
     fun incDerniereAlarme()
     fun resetDerniereAlarme()
-    fun ouvrePorte(idPorte: String, code: String?): Boolean
-    fun fermePorte(idPorte: String, code: String?): Boolean
+
+    fun setEnigme(id: String, solution: String?): EnigmeResult
+    fun resetEnigme(id: String): EnigmeResult
+}
+
+sealed interface EnigmeResult {
+    object Success : EnigmeResult
+    object NotFound : EnigmeResult
+    object Failure : EnigmeResult
 }

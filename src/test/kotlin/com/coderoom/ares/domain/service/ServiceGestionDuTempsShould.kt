@@ -22,7 +22,7 @@ internal class ServiceGestionDuTempsShould {
 
             serviceCompterARebours.updateCompteARebours()
 
-            assertEquals(70, inMemoryStoreRepository.getCompteARebours())
+            assertEquals(70, inMemoryStoreRepository.getJeu().compteARebours)
         }
 
         @Test
@@ -31,7 +31,7 @@ internal class ServiceGestionDuTempsShould {
 
             serviceCompterARebours.updateCompteARebours(-5)
 
-            assertEquals(5, inMemoryStoreRepository.getCompteARebours())
+            assertEquals(5, inMemoryStoreRepository.getJeu().compteARebours)
         }
 
         @Test
@@ -40,7 +40,7 @@ internal class ServiceGestionDuTempsShould {
 
             serviceCompterARebours.updateCompteARebours(-10)
 
-            assertEquals(0, inMemoryStoreRepository.getCompteARebours())
+            assertEquals(0, inMemoryStoreRepository.getJeu().compteARebours)
         }
     }
 

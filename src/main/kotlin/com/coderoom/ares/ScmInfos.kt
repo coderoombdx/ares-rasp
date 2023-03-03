@@ -10,9 +10,9 @@ class ScmInfos {
         Properties().apply { load(ScmInfos::class.java.classLoader.getResourceAsStream("git.properties")) }
     }
 
-    fun getVersion(): String = properties.getProperty("git.build.version", "")
-    fun getCommitId(): String = properties.getProperty("git.commit.id", "")
-    fun getCommitTime(): String = properties.getProperty("git.commit.time", "")
-    fun getCommitMessage(): String = properties.getProperty("git.commit.message.short", "")
+    fun getVersion(): String = "" //properties.getProperty("git.build.version", "")
+    fun getCommitId(): String = "" //properties.getProperty("git.commit.id", "")
+    fun getCommitTime(): String = "" //properties.getProperty("git.commit.time", "")
+    fun getCommitMessage(): String = "" //properties.getProperty("git.commit.message.short", "")
 
 }
