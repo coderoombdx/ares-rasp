@@ -1,6 +1,5 @@
 package com.coderoom.ares.adapter.store
 
-/*
 sealed class Module(
     val id: String,
     val enigmes: List<Enigme>
@@ -9,7 +8,7 @@ sealed class Module(
 object ModuleExterieur : Module(
     id = "exterieur",
     enigmes = listOf(
-        EnigmeCablePhotovoltaique
+        EnigmeCablePhotovoltaique,
+        EnigmeInterrupteurGeneral
     )
 )
-*/

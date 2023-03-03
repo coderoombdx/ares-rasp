@@ -1,7 +1,9 @@
 package com.coderoom.ares.adapter.store
 
 import com.coderoom.ares.TimeConstants
+import com.coderoom.ares.domain.model.Enigme
 import com.coderoom.ares.domain.model.Jeu
+import com.coderoom.ares.domain.model.Module
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -10,7 +12,19 @@ class InMemoryStoreRepository : StoreRepository {
         compteARebours = StoreSingleton.compteARebours,
         messageAide = StoreSingleton.messageAide,
         derniereAlarme = StoreSingleton.derniereAlarme,
-        modules = listOf(),
+        modules = StoreSingleton.modules.map { module ->
+            Module(
+                module.id,
+                module.enigmes.map { enigme ->
+                    Enigme(
+                        id = enigme.id,
+                        description = enigme.description,
+                        resolu = enigme.resolu,
+                        code = enigme.code
+                    )
+                }
+            )
+        },
     )
 
     override fun setCompteARebours(valeur: Int) {
@@ -52,4 +66,7 @@ private object StoreSingleton {
     var messageAide: String? = null
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0
+    val modules = listOf(
+        ModuleExterieur
+    )
 }
