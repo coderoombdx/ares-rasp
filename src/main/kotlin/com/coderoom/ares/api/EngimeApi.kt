@@ -1,5 +1,6 @@
 package com.coderoom.ares.api
 
+import com.coderoom.ares.adapter.store.EnigmeResult
 import com.coderoom.ares.adapter.store.StoreRepository
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
@@ -33,20 +34,28 @@ class EngimeApi(
         @PathVariable(required = true) id: String,
         @RequestBody(required = false) solution: String?
     ): ResponseEntity<Any> {
-        return ResponseEntity(HttpStatus.OK)
+        return when (storeRepository.setEnigme(id, solution)) {
+            EnigmeResult.Success -> ResponseEntity(HttpStatus.OK)
+            EnigmeResult.NotFound -> ResponseEntity(HttpStatus.NOT_FOUND)
+            EnigmeResult.Failure -> ResponseEntity(HttpStatus.FORBIDDEN)
+        }
     }
 
     @Operation(summary = "Reset une enigme")
     @ApiResponses(
         value = [
-            ApiResponse(responseCode = "200", description = "L'enigme est résolue"),
+            ApiResponse(responseCode = "200", description = "L'enigme est forcée a non résolute"),
             ApiResponse(responseCode = "404", description = "L'id de l'enigme n'existe pas")]
     )
     @DeleteMapping("/{id}")
     fun resetEnigme(
         @PathVariable(required = true) id: String
     ): ResponseEntity<Any> {
-        return ResponseEntity(HttpStatus.OK)
+        return when (storeRepository.resetEnigme(id)) {
+            EnigmeResult.Success -> ResponseEntity(HttpStatus.OK)
+            EnigmeResult.NotFound -> ResponseEntity(HttpStatus.NOT_FOUND)
+            EnigmeResult.Failure -> ResponseEntity(HttpStatus.FORBIDDEN)
+        }
     }
 
 }

@@ -6,7 +6,6 @@ interface StoreRepository {
 
     fun getJeu(): Jeu
 
-    fun getCompteARebours(): Int
     fun setCompteARebours(valeur: Int)
 
     fun setMessageAide(value: String?)
@@ -15,4 +14,13 @@ interface StoreRepository {
 
     fun incDerniereAlarme()
     fun resetDerniereAlarme()
+
+    fun setEnigme(id: String, solution: String?): EnigmeResult
+    fun resetEnigme(id: String): EnigmeResult
+}
+
+sealed interface EnigmeResult {
+    object Success : EnigmeResult
+    object NotFound : EnigmeResult
+    object Failure : EnigmeResult
 }

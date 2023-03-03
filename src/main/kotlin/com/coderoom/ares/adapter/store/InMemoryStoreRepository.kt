@@ -31,10 +31,6 @@ class InMemoryStoreRepository : StoreRepository {
         StoreSingleton.compteARebours = valeur
     }
 
-    override fun getCompteARebours(): Int {
-        return StoreSingleton.compteARebours
-    }
-
     override fun setMessageAide(value: String?) {
         StoreSingleton.messageAide = value
         if (value == null) {
@@ -42,6 +38,14 @@ class InMemoryStoreRepository : StoreRepository {
         } else {
             StoreSingleton.messageAideTTL = TimeConstants.messageTTL
         }
+    }
+
+    override fun getMessageAideTTL(): Int {
+        return StoreSingleton.messageAideTTL
+    }
+
+    override fun setMessageAideTTL(value: Int) {
+        StoreSingleton.messageAideTTL = value
     }
 
     override fun incDerniereAlarme() {
@@ -52,13 +56,32 @@ class InMemoryStoreRepository : StoreRepository {
         StoreSingleton.derniereAlarme = 0
     }
 
-    override fun getMessageAideTTL(): Int {
-        return StoreSingleton.messageAideTTL
+    override fun setEnigme(id: String, solution: String?): EnigmeResult {
+        val enigme = getEnigme(id)
+        return if (enigme == null) {
+            EnigmeResult.NotFound
+        } else {
+            if (enigme.code == solution) {
+                enigme.resolu = true
+                EnigmeResult.Success
+            } else {
+                EnigmeResult.Failure
+            }
+        }
     }
 
-    override fun setMessageAideTTL(value: Int) {
-        StoreSingleton.messageAideTTL = value
+    override fun resetEnigme(id: String): EnigmeResult {
+        val enigme = getEnigme(id)
+        return if (enigme == null) {
+            EnigmeResult.NotFound
+        } else {
+            enigme.resolu = false
+            EnigmeResult.Success
+        }
     }
+
+    private fun getEnigme(id: String) = StoreSingleton.modules.map { it.enigmes }.flatten().firstOrNull { it.id == id }
+
 }
 
 private object StoreSingleton {
@@ -67,6 +90,8 @@ private object StoreSingleton {
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0
     val modules = listOf(
-        ModuleExterieur
+        ModuleInterieur1,
+        ModuleExterieur,
+        ModuleInterieur2
     )
 }

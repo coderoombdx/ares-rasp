@@ -21,7 +21,7 @@ class ServiceGestionDuTemps(
     }
 
     fun updateCompteARebours(deltaInSecond: Int? = null) {
-        val compteARebours = repository.getCompteARebours() + (deltaInSecond ?: oneMinute)
+        val compteARebours = repository.getJeu().compteARebours + (deltaInSecond ?: oneMinute)
 
         if (compteARebours < 0) {
             repository.setCompteARebours(0)
