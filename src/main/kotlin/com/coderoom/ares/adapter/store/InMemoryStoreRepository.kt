@@ -61,7 +61,7 @@ class InMemoryStoreRepository : StoreRepository {
         return if (enigme == null) {
             EnigmeResult.NotFound
         } else {
-            if (enigme.code == solution) {
+            if (enigme.code(getJeu()) == solution) {
                 enigme.resolu = true
                 EnigmeResult.Success
             } else {

@@ -23,7 +23,7 @@ class HealthApi(
     private val context: ApplicationContext,
     private val scmInfos: ScmInfos
 ) {
-    @Operation(summary = "Retourne l'etat de l'application", description = "200")
+    @Operation(summary = "Retourne l'état de l'application", description = "200")
     @ApiResponses(value = [ApiResponse(responseCode = "200", description = "Tout va bien")])
     @GetMapping
     fun getHealth(): ResponseEntity<Any> {

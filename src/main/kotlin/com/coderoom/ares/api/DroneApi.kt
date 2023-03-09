@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.RestController
 class DroneApi(
     private val droneRepository: DroneRepository
 ) {
-    @Operation(summary = "Déclanche le vol du drone", description = "200 si ok")
+    @Operation(summary = "Déclenche le vol du drone", description = "200 si ok")
     @ApiResponses(
         value = [
             ApiResponse(responseCode = "200", description = "Vol lancé"),
             ApiResponse(responseCode = "304", description = "le vol est en cours"),
         ]
     )
-
     @PostMapping
     fun launchFlight(): ResponseEntity<Any> {
         val returnStatus = if (droneRepository.lanceVol()) {

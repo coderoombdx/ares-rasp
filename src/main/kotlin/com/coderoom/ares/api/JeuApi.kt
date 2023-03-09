@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 class JeuApi(
     private val storeRepository: StoreRepository
 ) {
-    @Operation(summary = "Envoie un etat du jeu", description = "200")
+    @Operation(summary = "Envoie un état du jeu", description = "200")
     @ApiResponses(value = [ApiResponse(responseCode = "200", description = "")])
     @GetMapping
     fun allStatus(): ResponseEntity<Any> {

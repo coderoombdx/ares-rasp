@@ -19,7 +19,7 @@ class AlarmeApi(
     private val serviceGestionDuTemps: ServiceGestionDuTemps
 ) {
     @Operation(
-        summary = "Déclanche une alarme qui sera consommé par unreal pour stresser les joueurs",
+        summary = "Déclenche une alarme qui sera consommé par unreal pour stresser les joueurs",
         description = "200"
     )
     @ApiResponses(value = [ApiResponse(responseCode = "200", description = "")])

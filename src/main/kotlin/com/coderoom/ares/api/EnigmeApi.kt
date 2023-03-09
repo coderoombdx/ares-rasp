@@ -19,18 +19,18 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @CrossOrigin
 @RequestMapping("/api/enigmes")
-class EngimeApi(
+class EnigmeApi(
     private val storeRepository: StoreRepository
 ) {
-    @Operation(summary = "Envoie la réponse d'une enigme")
+    @Operation(summary = "Envoie la réponse d'une énigme")
     @ApiResponses(
         value = [
-            ApiResponse(responseCode = "200", description = "L'enigme est résolue"),
-            ApiResponse(responseCode = "404", description = "L'id de l'enigme n'existe pas"),
-            ApiResponse(responseCode = "403", description = "La réponse à l'enigme n'est pas correcte")]
+            ApiResponse(responseCode = "200", description = "L'énigme est résolue"),
+            ApiResponse(responseCode = "404", description = "L'id de l'énigme n'existe pas"),
+            ApiResponse(responseCode = "403", description = "La réponse à l'énigme n'est pas correcte")]
     )
     @PostMapping("/{id}")
-    fun resousEnigme(
+    fun resoutEnigme(
         @PathVariable(required = true) id: String,
         @RequestBody(required = false) solution: String?
     ): ResponseEntity<Any> {
@@ -41,16 +41,16 @@ class EngimeApi(
         }
     }
 
-    @Operation(summary = "Reset une enigme")
+    @Operation(summary = "Reset une énigme")
     @ApiResponses(
         value = [
-            ApiResponse(responseCode = "200", description = "L'enigme est forcée a non résolute"),
-            ApiResponse(responseCode = "404", description = "L'id de l'enigme n'existe pas")]
+            ApiResponse(responseCode = "200", description = "L'énigme est forcée à non résolue"),
+            ApiResponse(responseCode = "404", description = "L'id de l'énigme n'existe pas")]
     )
     @DeleteMapping("/{id}")
     fun resetEnigme(
         @PathVariable(required = true) id: String
-    ): ResponseEntity<Any> {
+    ): ResponseEntity<Unit> {
         return when (storeRepository.resetEnigme(id)) {
             EnigmeResult.Success -> ResponseEntity(HttpStatus.OK)
             EnigmeResult.NotFound -> ResponseEntity(HttpStatus.NOT_FOUND)

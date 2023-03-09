@@ -1,13 +1,14 @@
 package com.coderoom.ares.api.model
 
 import com.coderoom.ares.domain.model.Enigme
+import com.coderoom.ares.domain.model.Jeu
 import com.coderoom.ares.domain.model.Module
 import com.coderoom.ares.api.model.Module as ModuleApiModel
 
-fun Module.toApiModel() = ModuleApiModel(
+fun Module.toApiModel(jeu: Jeu) = ModuleApiModel(
     id = this.id,
     etat = this.enigmes.toEtatModule(),
-    enigmes = this.enigmes.map { it.toApiModel() }
+    enigmes = this.enigmes.map { it.toApiModel(jeu) }
 )
 
 private fun List<Enigme>.toEtatModule(): ModuleApiModel.Etat {
