@@ -12,12 +12,16 @@ internal class ModuleMapperShould {
     internal fun `return ApiModule with empty module`() {
         val module = Module(
             id = "id",
+            description = "description",
+            idScenario = "1",
             enigmes = listOf()
         )
 
         val apiModel = module.toApiModel(JeuMock.default())
 
         assertEquals("id", apiModel.id)
+        assertEquals("description", apiModel.description)
+        assertEquals("1", apiModel.idScenario)
         assertEquals(0, apiModel.enigmes.size)
         assertEquals(ApiModule.Etat.ADEBUTER, apiModel.etat)
     }

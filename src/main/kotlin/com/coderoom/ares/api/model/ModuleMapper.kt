@@ -7,6 +7,8 @@ import com.coderoom.ares.api.model.Module as ModuleApiModel
 
 fun Module.toApiModel(jeu: Jeu) = ModuleApiModel(
     id = this.id,
+    description = this.description,
+    idScenario = this.idScenario,
     etat = this.enigmes.toEtatModule(),
     enigmes = this.enigmes.map { it.toApiModel(jeu) }
 )

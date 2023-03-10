@@ -14,8 +14,10 @@ class InMemoryStoreRepository : StoreRepository {
         derniereAlarme = StoreSingleton.derniereAlarme,
         modules = StoreSingleton.modules.map { module ->
             Module(
-                module.id,
-                module.enigmes.map { enigme ->
+                id = module.id,
+                description = module.description,
+                idScenario = module.idScenario,
+                enigmes = module.enigmes.map { enigme ->
                     Enigme(
                         id = enigme.id,
                         description = enigme.description,
@@ -56,7 +58,7 @@ class InMemoryStoreRepository : StoreRepository {
         StoreSingleton.derniereAlarme = 0
     }
 
-    override fun setEnigme(id: String, solution: String?): EnigmeResult {
+    override fun setEnigme(id: String, solution: String): EnigmeResult {
         val enigme = getEnigme(id)
         return if (enigme == null) {
             EnigmeResult.NotFound
@@ -90,8 +92,8 @@ private object StoreSingleton {
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0
     val modules = listOf(
-        ModuleInterieur1,
         ModuleExterieur,
+        ModuleInterieur1,
         ModuleInterieur2
     )
 }

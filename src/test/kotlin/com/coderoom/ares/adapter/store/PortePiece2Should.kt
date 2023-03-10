@@ -4,7 +4,7 @@ import com.coderoom.ares.domain.model.Jeu
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class PortePiece2Test {
+class PortePiece2Should {
 
     @Test
     fun `calculer correctement le code`() {
