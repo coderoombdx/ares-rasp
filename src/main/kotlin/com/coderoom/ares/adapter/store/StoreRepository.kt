@@ -15,7 +15,7 @@ interface StoreRepository {
     fun incDerniereAlarme()
     fun resetDerniereAlarme()
 
-    fun setEnigme(id: String, solution: String?): EnigmeResult
+    fun setEnigme(id: String, solution: String): EnigmeResult
     fun resetEnigme(id: String): EnigmeResult
 }
 

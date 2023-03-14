@@ -32,7 +32,7 @@ class EnigmeApi(
     @PostMapping("/{id}")
     fun resoutEnigme(
         @PathVariable(required = true) id: String,
-        @RequestBody(required = false) solution: String?
+        @RequestBody(required = false) solution: String
     ): ResponseEntity<Any> {
         return when (storeRepository.setEnigme(id, solution)) {
             EnigmeResult.Success -> ResponseEntity(HttpStatus.OK)

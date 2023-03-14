@@ -18,7 +18,7 @@ internal class InMemoryStoreRepositoryShould {
         assertEquals(null, jeu.messageAide)
         assertEquals(0, jeu.derniereAlarme)
         val moduleExterieur = jeu.modules.firstOrNull { it.id == "exterieur" }
-        assertNotNull(moduleExterieur)
+        assertEquals("Module extérieur", moduleExterieur?.description)
 
         val enigme = moduleExterieur?.enigmes?.firstOrNull { it.id == "cable" }
         assertNotNull(enigme)
@@ -69,25 +69,27 @@ internal class InMemoryStoreRepositoryShould {
         internal fun `return not found`() {
             val inMemoryStoreRepository = InMemoryStoreRepository()
 
-            val enigmeResult = inMemoryStoreRepository.setEnigme("dummy", null)
+            val enigmeResult = inMemoryStoreRepository.setEnigme("dummy", "code")
 
             assertEquals(EnigmeResult.NotFound, enigmeResult)
         }
 
         @Test
-        internal fun `return ok with null value`() {
+        internal fun `return ok with unresolved predecessor`() {
             val inMemoryStoreRepository = InMemoryStoreRepository()
 
-            val enigmeResult = inMemoryStoreRepository.setEnigme("cable", null)
+            val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.CablePhotovoltaique.id, "code")
 
-            assertEquals(EnigmeResult.Success, enigmeResult)
+            assertEquals(EnigmeResult.Failure, enigmeResult)
         }
 
         @Test
         internal fun `return ok with correct sucret code`() {
             val inMemoryStoreRepository = InMemoryStoreRepository()
 
-            val enigmeResult = inMemoryStoreRepository.setEnigme("porte_exterieur", "1024")
+            inMemoryStoreRepository.setEnigme(Enigme.CablePhotovoltaique.id, "branche")
+
+            val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.CablePhotovoltaique.id, "branche")
 
             assertEquals(EnigmeResult.Success, enigmeResult)
         }
@@ -96,7 +98,7 @@ internal class InMemoryStoreRepositoryShould {
         internal fun `return failure with correct sucret code`() {
             val inMemoryStoreRepository = InMemoryStoreRepository()
 
-            val enigmeResult = inMemoryStoreRepository.setEnigme("porte_exterieur", "incorrect")
+            val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.PortePiece1.id, "incorrect")
 
             assertEquals(EnigmeResult.Failure, enigmeResult)
         }

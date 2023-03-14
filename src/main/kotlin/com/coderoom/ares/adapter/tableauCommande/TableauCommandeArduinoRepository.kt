@@ -49,7 +49,7 @@ class TableauCommandeArduinoRepository : TableauCommandeRepository {
 */
 
         return TableauCommande(
-            lumiereStationAllume = (0..1).random() == 0
+            interrupteurGeneralOn = true
         )
     }
 }

@@ -6,39 +6,53 @@ sealed class Enigme(
     val id: String,
     val description: String,
     var resolu: Boolean,
-    var code: (Jeu) -> String?
+    val code: (Jeu) -> String?,
 ) {
+    companion object {
+        private const val ID_CABLE_PHOTOVOLTAIQUE = "cable"
+        private const val ID_INTER_GENERAL = "inter_general"
+        private const val ID_PORTE_EXTERIEUR = "porte_exterieur"
+        private const val ID_PORTE_PIECE1 = "porte_piece1"
+        private const val ID_PORTE_PIECE2 = "porte_piece2"
+    }
+
     object CablePhotovoltaique : Enigme(
-        id = "cable",
+        id = ID_CABLE_PHOTOVOLTAIQUE,
         description = "Relier le cable des panneaux photovoltaiques",
         resolu = false,
-        code = { _ -> null }
+        code = { _ -> "branche" },
     )
 
     object InterrupteurGeneral : Enigme(
-        id = "inter_general",
+        id = ID_INTER_GENERAL,
         description = "Allumer l'interrupteur générale pour eclairer la station",
-        resolu = true,
-        code = { _ -> null }
+        resolu = false,
+        code = { _ -> "allume" },
     )
 
     object PorteExterieur : Enigme(
-        id = "porte_exterieur",
-        description = "Tape un code pour entrer dans la station",
-        resolu = true,
-        code = { _ -> "1024" }
+        id = ID_PORTE_EXTERIEUR,
+        description = "La porte s'ouvre automatiquement lorsque le cable sont branchés",
+        resolu = false,
+        code = { jeu ->
+            if (jeu.getEnigme(ID_CABLE_PHOTOVOLTAIQUE)?.resolu == false) {
+                null
+            } else {
+                "phobos"
+            }
+        }
     )
 
     object PortePiece1 : Enigme(
-        id = "porte_piece1",
+        id = ID_PORTE_PIECE1,
         description = "Tape un code pour sortir de la piece",
-        resolu = true,
-        code = { _ -> null }
+        resolu = false,
+        code = { _ -> "1024" }
     )
 
     object PortePiece2 : Enigme(
-        id = "porte_piece1",
-        description = "Tape un code pour sortir de la piece",
+        id = ID_PORTE_PIECE2,
+        description = "Compter le nombre de segments correspondant au temps restant",
         resolu = false,
         code = { jeu ->
 
