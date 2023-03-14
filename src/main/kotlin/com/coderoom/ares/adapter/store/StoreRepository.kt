@@ -15,12 +15,17 @@ interface StoreRepository {
     fun incDerniereAlarme()
     fun resetDerniereAlarme()
 
-    fun setEnigme(id: String, solution: String): EnigmeResult
-    fun resetEnigme(id: String): EnigmeResult
+    fun setEnigme(id: String, solution: String): ResoudreEnigmeResult
+    fun resetEnigme(id: String): ResetEnigmeResult
 }
 
-sealed interface EnigmeResult {
-    object Success : EnigmeResult
-    object NotFound : EnigmeResult
-    object Failure : EnigmeResult
+sealed interface ResoudreEnigmeResult {
+    object Success : ResoudreEnigmeResult
+    object NotFound : ResoudreEnigmeResult
+    data class Failure(val solution: String) : ResoudreEnigmeResult
+}
+
+sealed interface ResetEnigmeResult {
+    object Success : ResetEnigmeResult
+    object NotFound : ResetEnigmeResult
 }

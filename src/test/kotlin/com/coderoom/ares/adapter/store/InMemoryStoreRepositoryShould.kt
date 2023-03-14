@@ -71,7 +71,7 @@ internal class InMemoryStoreRepositoryShould {
 
             val enigmeResult = inMemoryStoreRepository.setEnigme("dummy", "code")
 
-            assertEquals(EnigmeResult.NotFound, enigmeResult)
+            assertEquals(ResoudreEnigmeResult.NotFound, enigmeResult)
         }
 
         @Test
@@ -80,7 +80,7 @@ internal class InMemoryStoreRepositoryShould {
 
             val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.CablePhotovoltaique.id, "code")
 
-            assertEquals(EnigmeResult.Failure, enigmeResult)
+            assertEquals(ResoudreEnigmeResult.Failure, enigmeResult)
         }
 
         @Test
@@ -91,7 +91,7 @@ internal class InMemoryStoreRepositoryShould {
 
             val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.CablePhotovoltaique.id, "branche")
 
-            assertEquals(EnigmeResult.Success, enigmeResult)
+            assertEquals(ResoudreEnigmeResult.Success, enigmeResult)
         }
 
         @Test
@@ -100,7 +100,7 @@ internal class InMemoryStoreRepositoryShould {
 
             val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.PortePiece1.id, "incorrect")
 
-            assertEquals(EnigmeResult.Failure, enigmeResult)
+            assertEquals(ResoudreEnigmeResult.Failure, enigmeResult)
         }
     }
 
@@ -113,7 +113,7 @@ internal class InMemoryStoreRepositoryShould {
 
             val enigmeResult = inMemoryStoreRepository.resetEnigme("dummy")
 
-            assertEquals(EnigmeResult.NotFound, enigmeResult)
+            assertEquals(ResoudreEnigmeResult.NotFound, enigmeResult)
         }
 
         @Test
@@ -122,7 +122,7 @@ internal class InMemoryStoreRepositoryShould {
 
             val enigmeResult = inMemoryStoreRepository.resetEnigme("porte_exterieur")
 
-            assertEquals(EnigmeResult.Success, enigmeResult)
+            assertEquals(ResoudreEnigmeResult.Success, enigmeResult)
         }
     }
 }

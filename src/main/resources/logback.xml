@@ -1,0 +1,24 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} ▪️%-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT-api" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} 🔌%-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.coderoom.ares" level="debug"/>
+    <logger name="com.coderoom.ares.api" additivity="false">
+        <appender-ref ref="STDOUT-api" />
+    </logger>
+
+
+    <root level="warn">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>

@@ -58,27 +58,28 @@ class InMemoryStoreRepository : StoreRepository {
         StoreSingleton.derniereAlarme = 0
     }
 
-    override fun setEnigme(id: String, solution: String): EnigmeResult {
+    override fun setEnigme(id: String, solutionProposee: String): ResoudreEnigmeResult {
         val enigme = getEnigme(id)
         return if (enigme == null) {
-            EnigmeResult.NotFound
+            ResoudreEnigmeResult.NotFound
         } else {
-            if (enigme.code(getJeu()) == solution) {
+            val solution = enigme.code(getJeu())
+            if (solution == solutionProposee) {
                 enigme.resolu = true
-                EnigmeResult.Success
+                ResoudreEnigmeResult.Success
             } else {
-                EnigmeResult.Failure
+                ResoudreEnigmeResult.Failure(solution = solution.orEmpty())
             }
         }
     }
 
-    override fun resetEnigme(id: String): EnigmeResult {
+    override fun resetEnigme(id: String): ResetEnigmeResult {
         val enigme = getEnigme(id)
         return if (enigme == null) {
-            EnigmeResult.NotFound
+            ResetEnigmeResult.NotFound
         } else {
             enigme.resolu = false
-            EnigmeResult.Success
+            ResetEnigmeResult.Success
         }
     }
 

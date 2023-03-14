@@ -1,10 +1,13 @@
 package com.coderoom.ares.api
 
-import com.coderoom.ares.adapter.store.EnigmeResult
+import com.coderoom.ares.adapter.store.ResetEnigmeResult
+import com.coderoom.ares.adapter.store.ResoudreEnigmeResult.*
 import com.coderoom.ares.adapter.store.StoreRepository
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.CrossOrigin
@@ -15,13 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-
 @RestController
 @CrossOrigin
 @RequestMapping("/api/enigmes")
 class EnigmeApi(
     private val storeRepository: StoreRepository
 ) {
+
+    private val logger: Logger = LoggerFactory.getLogger(javaClass)
+
     @Operation(summary = "Envoie la réponse d'une énigme")
     @ApiResponses(
         value = [
@@ -32,12 +37,20 @@ class EnigmeApi(
     @PostMapping("/{id}")
     fun resoutEnigme(
         @PathVariable(required = true) id: String,
-        @RequestBody(required = false) solution: String
-    ): ResponseEntity<Any> {
-        return when (storeRepository.setEnigme(id, solution)) {
-            EnigmeResult.Success -> ResponseEntity(HttpStatus.OK)
-            EnigmeResult.NotFound -> ResponseEntity(HttpStatus.NOT_FOUND)
-            EnigmeResult.Failure -> ResponseEntity(HttpStatus.FORBIDDEN)
+        @RequestBody(required = false) solutionProposee: String
+    ): ResponseEntity<Unit> {
+        return when (val result = storeRepository.setEnigme(id, solutionProposee)) {
+            Success -> ResponseEntity<Unit>(HttpStatus.OK).also {
+                logger.info("resoutEnigme : résolution OK ($id -> $solutionProposee)")
+            }
+            NotFound -> ResponseEntity<Unit>(HttpStatus.NOT_FOUND).also {
+                logger.info("resoutEnigme : énigme non trouvée ($id)")
+            }
+
+            is Failure -> ResponseEntity<Unit>(HttpStatus.FORBIDDEN).also {
+                logger.info("resoutEnigme KO ($id -> $solutionProposee != solution: ${result.solution})")
+            }
+
         }
     }
 
@@ -52,9 +65,12 @@ class EnigmeApi(
         @PathVariable(required = true) id: String
     ): ResponseEntity<Unit> {
         return when (storeRepository.resetEnigme(id)) {
-            EnigmeResult.Success -> ResponseEntity(HttpStatus.OK)
-            EnigmeResult.NotFound -> ResponseEntity(HttpStatus.NOT_FOUND)
-            EnigmeResult.Failure -> ResponseEntity(HttpStatus.FORBIDDEN)
+            ResetEnigmeResult.Success -> ResponseEntity<Unit>(HttpStatus.OK).also {
+                logger.info("resetEnigme : reset OK ($id)")
+            }
+            ResetEnigmeResult.NotFound -> ResponseEntity<Unit>(HttpStatus.NOT_FOUND).also {
+                logger.info("resetEnigme : énigme non trouvée ($id)")
+            }
         }
     }
 
