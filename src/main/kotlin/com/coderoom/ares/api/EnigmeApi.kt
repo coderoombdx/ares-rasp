@@ -2,6 +2,7 @@ package com.coderoom.ares.api
 
 import com.coderoom.ares.adapter.store.EnigmeResult
 import com.coderoom.ares.adapter.store.StoreRepository
+import com.coderoom.ares.api.model.EnigmeProposition
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
@@ -32,9 +33,9 @@ class EnigmeApi(
     @PostMapping("/{id}")
     fun resoutEnigme(
         @PathVariable(required = true) id: String,
-        @RequestBody(required = false) solution: String
+        @RequestBody(required = false) enigmeProposition: EnigmeProposition
     ): ResponseEntity<Any> {
-        return when (storeRepository.setEnigme(id, solution)) {
+        return when (storeRepository.setEnigme(id, enigmeProposition.code)) {
             EnigmeResult.Success -> ResponseEntity(HttpStatus.OK)
             EnigmeResult.NotFound -> ResponseEntity(HttpStatus.NOT_FOUND)
             EnigmeResult.Failure -> ResponseEntity(HttpStatus.FORBIDDEN)
