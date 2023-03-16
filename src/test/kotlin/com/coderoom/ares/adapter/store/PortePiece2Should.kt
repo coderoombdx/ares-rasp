@@ -13,10 +13,11 @@ class PortePiece2Should {
             compteARebours = 0,
             messageAide = "",
             derniereAlarme = 12,
+            interrupteurGeneral = true,
             modules = listOf()
         )
 
-        assertEquals("6645", Enigme.PortePiece2.code(context.copy(compteARebours = 45 * 60))) // "00:45"
-        assertEquals("6657", Enigme.PortePiece2.code(context.copy(compteARebours = 28 * 60)))  // "00:28"
+        assertEquals("6645", Enigme.SegmentRadioHorloge.code(context.copy(compteARebours = 45 * 60))) // "00:45"
+        assertEquals("6657", Enigme.SegmentRadioHorloge.code(context.copy(compteARebours = 28 * 60)))  // "00:28"
     }
 }

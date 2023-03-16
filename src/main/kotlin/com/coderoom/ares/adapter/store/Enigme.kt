@@ -11,7 +11,7 @@ sealed class Enigme(
     companion object {
         private const val ID_CABLE_PHOTOVOLTAIQUE = "cable"
         private const val ID_INTER_GENERAL = "inter_general"
-        private const val ID_PORTE_EXTERIEUR = "porte_exterieur"
+        private const val ID_PORTE_EXTERIEUR = "porte_exterieure"
         private const val ID_PORTE_PIECE1 = "porte_piece1"
         private const val ID_PORTE_PIECE2 = "porte_piece2"
     }
@@ -50,7 +50,7 @@ sealed class Enigme(
         code = { _ -> "1024" }
     )
 
-    object PortePiece2 : Enigme(
+    object SegmentRadioHorloge : Enigme(
         id = ID_PORTE_PIECE2,
         description = "Compter le nombre de segments correspondant au temps restant",
         resolu = false,

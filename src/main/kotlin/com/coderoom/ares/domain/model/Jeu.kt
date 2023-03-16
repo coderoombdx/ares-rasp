@@ -4,6 +4,7 @@ data class Jeu(
     val compteARebours: Int,
     val messageAide: String?,
     val derniereAlarme: Int,
+    val interrupteurGeneral: Boolean,
     val modules: List<Module>,
 ) {
     fun getEnigme(id: String) = this.modules.map { it.enigmes }.flatten().firstOrNull { it.id == id }

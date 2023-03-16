@@ -12,6 +12,7 @@ class InMemoryStoreRepository : StoreRepository {
         compteARebours = StoreSingleton.compteARebours,
         messageAide = StoreSingleton.messageAide,
         derniereAlarme = StoreSingleton.derniereAlarme,
+        interrupteurGeneral = StoreSingleton.interrupteurGeneral,
         modules = StoreSingleton.modules.map { module ->
             Module(
                 id = module.id,
@@ -92,9 +93,11 @@ private object StoreSingleton {
     var messageAide: String? = null
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0
+    var interrupteurGeneral: Boolean = false
     val modules = listOf(
         ModuleExterieur,
-        ModuleInterieur1,
-        ModuleInterieur2
+        ModuleSegmentHorloge,
+
+        ModuleSystemSolaire,
     )
 }

@@ -7,6 +7,7 @@ internal class JeuMock {
             compteARebours = 0,
             messageAide = "message",
             derniereAlarme = 0,
+            interrupteurGeneral = true,
             modules = listOf(
                 ModuleMock.exterieur(),
                 ModuleMock.interieur1(),
