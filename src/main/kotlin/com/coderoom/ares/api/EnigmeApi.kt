@@ -3,6 +3,7 @@ package com.coderoom.ares.api
 import com.coderoom.ares.adapter.store.ResetEnigmeResult
 import com.coderoom.ares.adapter.store.ResoudreEnigmeResult.*
 import com.coderoom.ares.adapter.store.StoreRepository
+import com.coderoom.ares.api.model.EnigmeProposition
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
@@ -37,9 +38,9 @@ class EnigmeApi(
     @PostMapping("/{id}")
     fun resoutEnigme(
         @PathVariable(required = true) id: String,
-        @RequestBody(required = false) solutionProposee: String
+        @RequestBody(required = false) solutionProposee: EnigmeProposition
     ): ResponseEntity<Unit> {
-        return when (val result = storeRepository.setEnigme(id, solutionProposee)) {
+        return when (val result = storeRepository.setEnigme(id, solutionProposee.code)) {
             Success -> ResponseEntity<Unit>(HttpStatus.OK).also {
                 logger.info("resoutEnigme : résolution OK ($id -> $solutionProposee)")
             }
