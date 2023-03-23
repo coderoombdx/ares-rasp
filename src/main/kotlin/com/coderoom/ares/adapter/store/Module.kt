@@ -39,3 +39,11 @@ object ModuleSystemSolaire : Module(
     )
 )
 
+object ModuleSeulSurMars : Module(
+    id = "seul_sur_mars",
+    description = "Trouver le code grâce au livre seul sur mars",
+    idScenario = "2",
+    enigmes = listOf(
+        Enigme.PortePieceSeulSurMars,
+    )
+)

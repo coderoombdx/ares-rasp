@@ -14,6 +14,7 @@ sealed class Enigme(
         private const val ID_PORTE_EXTERIEUR = "porte_exterieure"
         private const val ID_PORTE_PIECE1 = "porte_piece1"
         private const val ID_PORTE_PIECE2 = "porte_piece2"
+        private const val ID_SEUL_SUR_MARS = "seul_sur_mars"
     }
 
     object CablePhotovoltaique : Enigme(
@@ -32,7 +33,7 @@ sealed class Enigme(
 
     object PorteExterieur : Enigme(
         id = ID_PORTE_EXTERIEUR,
-        description = "La porte s'ouvre automatiquement lorsque le cable sont branchés",
+        description = "Alignement des satellites donne le code",
         resolu = false,
         code = { jeu ->
             if (jeu.getEnigme(ID_CABLE_PHOTOVOLTAIQUE)?.resolu == false) {
@@ -75,4 +76,13 @@ sealed class Enigme(
                 }
         }
     )
+
+    object PortePieceSeulSurMars : Enigme(
+        id = ID_SEUL_SUR_MARS,
+        description = "Trouver le code P314, L5, M3",
+        resolu = false,
+        code = { _ -> "1976" }
+    )
+
+
 }

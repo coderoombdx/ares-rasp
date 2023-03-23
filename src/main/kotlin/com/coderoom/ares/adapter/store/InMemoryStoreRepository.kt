@@ -100,5 +100,6 @@ private object StoreSingleton {
         ModuleSegmentHorloge,
 
         ModuleSystemSolaire,
+        ModuleSeulSurMars,
     )
 }
