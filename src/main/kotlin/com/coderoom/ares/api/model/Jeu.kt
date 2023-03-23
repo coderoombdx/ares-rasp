@@ -6,6 +6,6 @@ data class Jeu(
     val messageAide: String?,
     val derniereAlarme: Int,
     val interrupteurGeneral: Boolean,
-    val heureMartienne: Int,
+    val heureMartienne: String,
     val modules: List<Module>,
 )

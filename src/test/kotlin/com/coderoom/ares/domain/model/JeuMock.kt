@@ -10,7 +10,7 @@ internal class JeuMock {
             messageAide = "message",
             derniereAlarme = 0,
             interrupteurGeneral = true,
-            heureMartienne = TimeConstants.heureSurMars,
+            heureMartienneEnSecondes = TimeConstants.heureSurMars,
             modules = listOf(
                 ModuleMock.exterieur(),
                 ModuleMock.interieur1(),

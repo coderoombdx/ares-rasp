@@ -15,10 +15,16 @@ class PortePiece2Should {
             derniereAlarme = 12,
             interrupteurGeneral = true,
             modules = listOf(),
-            heureMartienne = 0
+            heureMartienneEnSecondes = 0
         )
 
-        assertEquals("6645", Enigme.SegmentRadioHorloge.code(context.copy(heureMartienne = 45 * 60))) // "00:45"
-        assertEquals("6657", Enigme.SegmentRadioHorloge.code(context.copy(heureMartienne = 28 * 60)))  // "00:28"
+        assertEquals(
+            "6645",
+            Enigme.SegmentRadioHorloge.code(context.copy(heureMartienneEnSecondes = 45 * 60))
+        ) // "00:45"
+        assertEquals(
+            "6657",
+            Enigme.SegmentRadioHorloge.code(context.copy(heureMartienneEnSecondes = 28 * 60))
+        )  // "00:28"
     }
 }

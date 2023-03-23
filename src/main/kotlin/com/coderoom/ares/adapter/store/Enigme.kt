@@ -57,7 +57,7 @@ sealed class Enigme(
         resolu = false,
         code = { jeu ->
 
-            val secondesRestantes = jeu.heureMartienne.toLong()
+            val secondesRestantes = jeu.heureMartienneEnSecondes.toLong()
             val heuresRestantes = secondesRestantes / 3600
             val minutesRestantes = (secondesRestantes % 3600) / 60
 
