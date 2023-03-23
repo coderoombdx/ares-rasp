@@ -63,7 +63,7 @@ internal class ServiceGestionDuTempsShould {
         internal fun `reset le compte a rebours`() {
             serviceCompterARebours.resetCompteARebours()
 
-            assertEquals(TimeConstants.gameDuration, inMemoryStoreRepository.getJeu().compteARebours)
+            assertEquals(TimeConstants.dureeDuJeu, inMemoryStoreRepository.getJeu().compteARebours)
         }
     }
 

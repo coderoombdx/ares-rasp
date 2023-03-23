@@ -8,5 +8,7 @@ fun Jeu.toApiModel(currentTimeMillis: Long) = JeuApiModel(
     compteARebours = this.compteARebours,
     messageAide = this.messageAide,
     derniereAlarme = this.derniereAlarme,
+    interrupteurGeneral = this.interrupteurGeneral,
+    heureMartienne = this.heureMartienne,
     modules = this.modules.map { it.toApiModel(this) }
 )

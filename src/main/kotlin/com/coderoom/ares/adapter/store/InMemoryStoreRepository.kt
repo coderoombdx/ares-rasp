@@ -13,6 +13,7 @@ class InMemoryStoreRepository : StoreRepository {
         messageAide = StoreSingleton.messageAide,
         derniereAlarme = StoreSingleton.derniereAlarme,
         interrupteurGeneral = StoreSingleton.interrupteurGeneral,
+        heureMartienne = (TimeConstants.dureeDuJeu - StoreSingleton.compteARebours) + TimeConstants.heureSurMars,
         modules = StoreSingleton.modules.map { module ->
             Module(
                 id = module.id,
@@ -89,7 +90,7 @@ class InMemoryStoreRepository : StoreRepository {
 }
 
 private object StoreSingleton {
-    var compteARebours: Int = TimeConstants.gameDuration
+    var compteARebours: Int = TimeConstants.dureeDuJeu
     var messageAide: String? = null
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0

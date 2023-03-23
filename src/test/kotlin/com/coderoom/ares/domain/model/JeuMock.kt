@@ -1,5 +1,7 @@
 package com.coderoom.ares.domain.model
 
+import com.coderoom.ares.TimeConstants
+
 
 internal class JeuMock {
     companion object {
@@ -8,6 +10,7 @@ internal class JeuMock {
             messageAide = "message",
             derniereAlarme = 0,
             interrupteurGeneral = true,
+            heureMartienne = TimeConstants.heureSurMars,
             modules = listOf(
                 ModuleMock.exterieur(),
                 ModuleMock.interieur1(),

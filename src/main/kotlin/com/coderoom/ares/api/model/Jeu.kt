@@ -5,5 +5,7 @@ data class Jeu(
     val timestampFinDuJeu: Long,
     val messageAide: String?,
     val derniereAlarme: Int,
+    val interrupteurGeneral: Boolean,
+    val heureMartienne: Int,
     val modules: List<Module>,
 )
