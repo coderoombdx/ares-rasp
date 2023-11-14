@@ -31,4 +31,6 @@ class JeuApi(
         logger.info("Get jeu")
         return ResponseEntity(storeRepository.getJeu().toApiModel(System.currentTimeMillis()), HttpStatus.OK)
     }
+
+    // TODO faire put de /api/jeu pour seter un parametre donné. Exemple /api/jeu/ modifie n'importe quoi dans jeu
 }

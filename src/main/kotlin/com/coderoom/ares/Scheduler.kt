@@ -15,7 +15,7 @@ class Scheduler(
     @Scheduled(fixedRate = TimeConstants.millisParSeconde, initialDelay = 10 * TimeConstants.millisParSeconde)
     private fun readAndStoreIncomingData() {
         serviceGestionDuTemps.gereLeTemps()
-        serviceTableauCommande.setInterGeneral() // En attendant la lecture de l'arduino
+        serviceTableauCommande.setInterGeneral() // TODO En attendant la lecture de l'arduino
     }
 }
 

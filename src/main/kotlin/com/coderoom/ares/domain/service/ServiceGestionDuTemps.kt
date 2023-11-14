@@ -47,6 +47,7 @@ class ServiceGestionDuTemps(
     fun resetCompteARebours() {
         repository.setCompteARebours(TimeConstants.dureeDuJeu)
         repository.resetDerniereAlarme()
+        // TODO Reset des enigmes
     }
 
     fun resetAlarme() {

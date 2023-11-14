@@ -32,7 +32,7 @@ object ModuleSegmentHorloge : Module(
 //
 object ModuleSystemSolaire : Module(
     id = "system_solaire",
-    description = "Ordonné les planètes grâces a la composition de l'atmosphère",
+    description = "Ordonner les planètes grâces a la composition de l'atmosphère",
     idScenario = "2",
     enigmes = listOf(
         Enigme.PortePiece1,
