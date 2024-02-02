@@ -12,10 +12,10 @@ class Scheduler(
     private val serviceGestionDuTemps: ServiceGestionDuTemps,
     private val serviceTableauCommande: ServiceTableauCommande
 ) {
-    @Scheduled(fixedRate = TimeConstants.millisParSeconde, initialDelay = 10 * TimeConstants.millisParSeconde)
+    @Scheduled(fixedRate = TimeConstants.millisParSeconde, initialDelay = 5 * TimeConstants.millisParSeconde)
     private fun readAndStoreIncomingData() {
         serviceGestionDuTemps.gereLeTemps()
-        serviceTableauCommande.setInterGeneral() // TODO En attendant la lecture de l'arduino
+        serviceTableauCommande.setInterGeneral()
     }
 }
 
