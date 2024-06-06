@@ -54,7 +54,7 @@ sealed class Enigme(
 
     object SegmentHorlogeRadio : Enigme(
         id = ID_SEGMENT_HORLOGE_RADIO,
-        description = "Compter le nombre de segments correspondant au temps restant",
+        description = "Compter le nombre de segments du radio réveil",
         resolu = false,
         code = { jeu ->
 
@@ -81,7 +81,7 @@ sealed class Enigme(
 
     object FishingRootTerminalRoot : Enigme(
         id = ID_FISHING_ROOT_TERMINAL,
-        description = "",
+        description = "Si les joueurs saisissent Admin-ares, ils ont perdu",
         resolu = false,
         code = { _ -> "Admin-ares" }
     )
@@ -105,7 +105,7 @@ sealed class Enigme(
 
     object FishingRootDoorOpen : Enigme(
         id = ID_FISHING_ROOT_DOOR_OPEN,
-        description = "",
+        description = "Enigme technique : après un temps donné, la porte s'ouvre",
         resolu = false,
         code = { _ ->
             ""
@@ -141,7 +141,7 @@ sealed class Enigme(
 
     object Levier : Enigme(
         id = LEVIER,
-        description = "",
+        description = "Les deux joueurs doivent abaisser un levier pour terraformer Mars",
         resolu = false,
         code = { jeu ->
             jeu.fishingDoorStart = jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom

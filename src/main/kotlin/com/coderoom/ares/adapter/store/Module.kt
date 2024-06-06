@@ -21,7 +21,7 @@ object ModuleExterieur : Module(
 
 object ModuleHallEntree : Module(
     id = "hall_entree",
-    description = "Le code correspond au nombre de segments de LEDS affichés par un radio réveil dans le jeu",
+    description = "Hall d'entrée",
     idScenario = "1",
     enigmes = listOf(
         Enigme.SegmentHorlogeRadio,
@@ -30,7 +30,7 @@ object ModuleHallEntree : Module(
 
 object ModuleSecuriteRoot : Module(
     id = "capcom_room",
-    description = "",
+    description = "Piece Capcom",
     idScenario = "1",
     enigmes = listOf(
         Enigme.FishingRootTerminalRoot,
@@ -41,7 +41,7 @@ object ModuleSecuriteRoot : Module(
 
 object ModuleLevier : Module(
     id = "levier",
-    description = "",
+    description = "Derniere salle",
     idScenario = "1",
     enigmes = listOf(
         Enigme.Levier,
