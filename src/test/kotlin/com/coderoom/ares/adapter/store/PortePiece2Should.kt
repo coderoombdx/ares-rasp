@@ -1,7 +1,6 @@
 package com.coderoom.ares.adapter.store
 
 import com.coderoom.ares.domain.model.Jeu
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class PortePiece2Should {
@@ -15,16 +14,8 @@ class PortePiece2Should {
             derniereAlarme = 12,
             interrupteurGeneral = true,
             modules = listOf(),
-            heureMartienneEnSecondes = 0
+            heureMartienneEnSecondes = 0,
+            fishingDoorStart = 0
         )
-
-        assertEquals(
-            "6645",
-            Enigme.SegmentRadioHorloge.code(context.copy(heureMartienneEnSecondes = 45 * 60))
-        ) // "00:45"
-        assertEquals(
-            "6657",
-            Enigme.SegmentRadioHorloge.code(context.copy(heureMartienneEnSecondes = 28 * 60))
-        )  // "00:28"
     }
 }

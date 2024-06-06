@@ -2,6 +2,10 @@
 
 SERVER_URL="192.168.1.10"
 
+echo "Se connecter en wifi sur le raspberry"
+echo "COUPER le proxy"
+echo
+#LM studio
 ping $SERVER_URL
 
 echo "scp du jar"

@@ -14,6 +14,7 @@ class InMemoryStoreRepository : StoreRepository {
         derniereAlarme = StoreSingleton.derniereAlarme,
         interrupteurGeneral = StoreSingleton.interrupteurGeneral,
         heureMartienneEnSecondes = (TimeConstants.dureeDuJeu - StoreSingleton.compteARebours) + TimeConstants.heureSurMars,
+        fishingDoorStart = Int.MAX_VALUE,
         modules = StoreSingleton.modules.map { module ->
             Module(
                 id = module.id,
@@ -97,9 +98,13 @@ private object StoreSingleton {
     var interrupteurGeneral: Boolean = false
     val modules = listOf(
         ModuleExterieur,
-        ModuleSegmentHorloge,
+        ModuleHallEntree,
+        ModuleSecuriteRoot,
+        ModuleLevier,
 
         ModuleSystemSolaire,
         ModuleSeulSurMars,
+        ModuleSecuritePasswd,
+        ModuleHautsParleur,
     )
 }

@@ -11,6 +11,7 @@ internal class JeuMock {
             derniereAlarme = 0,
             interrupteurGeneral = true,
             heureMartienneEnSecondes = TimeConstants.heureSurMars,
+            fishingDoorStart = 0,
             modules = listOf(
                 ModuleMock.exterieur(),
                 ModuleMock.interieur1(),

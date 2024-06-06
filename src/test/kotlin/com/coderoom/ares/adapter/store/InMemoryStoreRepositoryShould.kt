@@ -98,7 +98,7 @@ internal class InMemoryStoreRepositoryShould {
         internal fun `return failure with correct sucret code`() {
             val inMemoryStoreRepository = InMemoryStoreRepository()
 
-            val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.PortePiece1.id, "incorrect")
+            val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.PorteSystemSolaire.id, "incorrect")
 
             assertEquals(ResoudreEnigmeResult.Failure("1024"), enigmeResult)
         }
