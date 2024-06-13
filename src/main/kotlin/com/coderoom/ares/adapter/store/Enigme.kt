@@ -15,12 +15,12 @@ sealed class Enigme(
         private const val ID_PORTE_EXTERIEUR = "porte_exterieure"
         private const val ID_SEGMENT_HORLOGE_RADIO = "segment_horloge"
         private const val LEVIER = "levier"
-        private const val ID_FISHING_ROOT_TERMINAL = "fishing_root_terminal"
         private const val ID_FISHING_PASSWORD_TERMINAL = "fishing_password_terminal"
-        private const val ID_FISHING_DOOR_START = "fishing_door_start"
-        private const val ID_FISHING_PASSWORD_DOOR_START = "fishing_door_start"
-        private const val ID_FISHING_ROOT_DOOR_OPEN = "fishing_password_door_open"
+        private const val ID_FISHING_PASSWORD_DOOR_START = "fishing_password_door_start"
         private const val ID_FISHING_PASSWORD_DOOR_OPEN = "fishing_password_door_open"
+        private const val ID_FISHING_ROOT_TERMINAL = "fishing_root_terminal"
+        private const val ID_FISHING_ROOT_DOOR_START = "fishing_root_door_open"
+        private const val ID_FISHING_ROOT_DOOR_OPEN = "fishing_root_door_open"
         private const val ID_SYSTEME_SOLAIRE = "systeme_solaire"
         private const val ID_SEUL_SUR_MARS = "seul_sur_mars"
         private const val ID_HAUT_PARLEUR = "haut_parleur"
@@ -78,6 +78,12 @@ sealed class Enigme(
         }
     )
 
+    object PorteSystemSolaire : Enigme(
+        id = ID_SYSTEME_SOLAIRE,
+        description = "Tape le 32675 pour sortir de la piece",
+        resolu = false,
+        code = { _ -> "32675" }
+    )
 
     object FishingRootTerminalRoot : Enigme(
         id = ID_FISHING_ROOT_TERMINAL,
@@ -86,15 +92,8 @@ sealed class Enigme(
         code = { _ -> "Admin-ares" }
     )
 
-    object PorteSystemSolaire : Enigme(
-        id = ID_SYSTEME_SOLAIRE,
-        description = "Tape le 32675 pour sortir de la piece",
-        resolu = false,
-        code = { _ -> "32675" }
-    )
-
     object FishingRootDoorStart : Enigme(
-        id = ID_FISHING_DOOR_START,
+        id = ID_FISHING_ROOT_DOOR_START,
         description = "Enigme technique : quand le joueur entre dans la piece, cela déclenche un chrono",
         resolu = false,
         code = { jeu ->
@@ -160,7 +159,7 @@ sealed class Enigme(
         id = ID_HAUT_PARLEUR,
         description = "",
         resolu = false,
-        code = { _ -> "1976" }
+        code = { _ -> "oxygene" }
     )
 
 

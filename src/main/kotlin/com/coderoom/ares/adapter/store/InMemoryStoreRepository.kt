@@ -95,7 +95,7 @@ private object StoreSingleton {
     var messageAide: String? = null
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0
-    var interrupteurGeneral: Boolean = false
+    var interrupteurGeneral: Boolean = true
     val modules = listOf(
         ModuleExterieur,
         ModuleHallEntree,
