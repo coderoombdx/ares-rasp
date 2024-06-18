@@ -27,21 +27,21 @@ sealed class Enigme(
     }
     object CablePhotovoltaique : Enigme(
         id = ID_CABLE_PHOTOVOLTAIQUE,
-        description = "Relier le cable des panneaux photovoltaiques sur mars",
+        description = "Relier le cable des panneaux photovoltaiques sur mars (branche)",
         resolu = false,
         code = { _ -> "branche" },
     )
 
     object InterrupteurGeneral : Enigme(
         id = ID_INTER_GENERAL,
-        description = "Allumer l'interrupteur générale pour eclairer la station RFID Arduino",
+        description = "Allumer l'interrupteur générale pour eclairer la station RFID Arduino (allume)",
         resolu = false,
         code = { _ -> "allume" },
     )
 
     object PorteExterieur : Enigme(
         id = ID_PORTE_EXTERIEUR,
-        description = "Alignement des satellites donne : phobos",
+        description = "Aligner les satellites (phobos)",
         resolu = false,
         code = { jeu ->
             if (jeu.getEnigme(ID_CABLE_PHOTOVOLTAIQUE)?.resolu == false) {
@@ -54,7 +54,7 @@ sealed class Enigme(
 
     object SegmentHorlogeRadio : Enigme(
         id = ID_SEGMENT_HORLOGE_RADIO,
-        description = "Compter le nombre de segments du radio réveil",
+        description = "Compter le nombre de segments du radio réveil (4 chiffres)",
         resolu = false,
         code = { jeu ->
 
@@ -80,14 +80,14 @@ sealed class Enigme(
 
     object PorteSystemSolaire : Enigme(
         id = ID_SYSTEME_SOLAIRE,
-        description = "Tape le 32675 pour sortir de la piece",
+        description = "Tape le 32675 pour sortir de la piece (32675)",
         resolu = false,
         code = { _ -> "32675" }
     )
 
     object FishingRootTerminalRoot : Enigme(
         id = ID_FISHING_ROOT_TERMINAL,
-        description = "Si les joueurs saisissent Admin-ares, ils ont perdu",
+        description = "Si les joueurs saisissent le user admin, ils ont perdu (Admin-ares)",
         resolu = false,
         code = { _ -> "Admin-ares" }
     )
@@ -104,7 +104,7 @@ sealed class Enigme(
 
     object FishingRootDoorOpen : Enigme(
         id = ID_FISHING_ROOT_DOOR_OPEN,
-        description = "Enigme technique : après un temps donné, la porte s'ouvre",
+        description = "Enigme technique : après un temps donné, la porte s'ouvre ()",
         resolu = false,
         code = { _ ->
             ""
@@ -113,7 +113,7 @@ sealed class Enigme(
 
     object FishingPasswordTerminal : Enigme(
         id = ID_FISHING_PASSWORD_TERMINAL,
-        description = "",
+        description = "Si les joueurs saisissent le password, ils ont perdu (A&oYGrpkD#99mqZ)",
         resolu = false,
         code = { _ -> "A&oYGrpkD#99mqZ" }
     )
@@ -130,7 +130,7 @@ sealed class Enigme(
 
     object FishingPasswordDoorOpen : Enigme(
         id = ID_FISHING_PASSWORD_DOOR_OPEN,
-        description = "",
+        description = "Enigme technique : après un temps donné, la porte s'ouvre ()",
         resolu = false,
         code = { jeu ->
             jeu.fishingDoorStart = jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom
@@ -150,17 +150,15 @@ sealed class Enigme(
 
     object PortePieceSeulSurMars : Enigme(
         id = ID_SEUL_SUR_MARS,
-        description = "Trouver le code P314, L5, M3 - 1976",
+        description = "Trouver le code P314, L5, M3 (1976)",
         resolu = false,
         code = { _ -> "1976" }
     )
 
     object PorteHautParleur : Enigme(
         id = ID_HAUT_PARLEUR,
-        description = "",
+        description = "Trouver le mot sur les hauts parleurs (oxygene)",
         resolu = false,
         code = { _ -> "oxygene" }
     )
-
-
 }

@@ -67,6 +67,15 @@ object ModuleSecuGPT : Module(
 
 // Scenario 2
 //
+object ModuleLumiereStation : Module(
+    id = "lumiere_station",
+    description = "Mettre la carte RFID sur le tableau de commande",
+    idScenario = "2",
+    enigmes = listOf(
+        Enigme.InterrupteurGeneral,
+    )
+)
+
 object ModuleSystemSolaire : Module(
     id = "systeme_solaire",
     description = "Ordonner les planètes grâces a la composition de l'atmosphère",

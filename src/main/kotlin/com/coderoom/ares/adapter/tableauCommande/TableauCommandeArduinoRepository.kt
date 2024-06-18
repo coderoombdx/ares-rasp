@@ -47,8 +47,7 @@ class TableauCommandeArduinoRepository : TableauCommandeRepository {
         }
 
         return TableauCommande(
-            // interrupteurGeneralOn = (rfidSet == "1")
-            interrupteurGeneralOn = true
+            interrupteurGeneralOn = (rfidSet == "1")
         )
     }
 }

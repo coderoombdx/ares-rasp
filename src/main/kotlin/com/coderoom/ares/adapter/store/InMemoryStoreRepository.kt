@@ -102,6 +102,7 @@ private object StoreSingleton {
         ModuleSecuriteRoot,
         ModuleLevier,
 
+        ModuleLumiereStation,
         ModuleSystemSolaire,
         ModuleSeulSurMars,
         ModuleSecuritePasswd,
