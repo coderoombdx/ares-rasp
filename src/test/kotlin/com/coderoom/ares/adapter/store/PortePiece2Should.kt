@@ -13,9 +13,10 @@ class PortePiece2Should {
             messageAide = "",
             derniereAlarme = 12,
             interrupteurGeneral = true,
-            modules = listOf(),
             heureMartienneEnSecondes = 0,
-            fishingDoorStart = 0
+            fishingDoorStart = 0,
+            modules = listOf(),
+            terraformation = false
         )
     }
 }

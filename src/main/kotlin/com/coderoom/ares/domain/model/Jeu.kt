@@ -5,9 +5,10 @@ data class Jeu(
     val messageAide: String?,
     val derniereAlarme: Int,
     val interrupteurGeneral: Boolean,
+    var terraformation: Boolean,
     val heureMartienneEnSecondes: Int,
     var fishingDoorStart: Int,
-    val modules: List<Module>,
+    var modules: List<Module>,
 ) {
     fun getEnigme(id: String) = this.modules.map { it.enigmes }.flatten().firstOrNull { it.id == id }
 

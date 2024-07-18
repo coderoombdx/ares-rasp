@@ -8,4 +8,5 @@ data class Jeu(
     val interrupteurGeneral: Boolean,
     val heureMartienne: String,
     val modules: List<Module>,
+    val terraformation: Boolean,
 )

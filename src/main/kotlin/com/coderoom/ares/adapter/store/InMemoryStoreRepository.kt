@@ -13,6 +13,7 @@ class InMemoryStoreRepository : StoreRepository {
         messageAide = StoreSingleton.messageAide,
         derniereAlarme = StoreSingleton.derniereAlarme,
         interrupteurGeneral = StoreSingleton.interrupteurGeneral,
+        terraformation = StoreSingleton.terraformation,
         heureMartienneEnSecondes = (TimeConstants.dureeDuJeu - StoreSingleton.compteARebours) + TimeConstants.heureSurMars,
         fishingDoorStart = Int.MAX_VALUE,
         modules = StoreSingleton.modules.map { module ->
@@ -96,11 +97,13 @@ private object StoreSingleton {
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0
     var interrupteurGeneral: Boolean = true
+    var terraformation: Boolean = false
     val modules = listOf(
         ModuleExterieur,
         ModuleHallEntree,
         ModuleSecuriteRoot,
         ModuleLevier,
+        ModuleTerraforming,
 
         ModuleLumiereStation,
         ModuleSystemSolaire,

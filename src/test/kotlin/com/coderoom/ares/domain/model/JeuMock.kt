@@ -2,7 +2,6 @@ package com.coderoom.ares.domain.model
 
 import com.coderoom.ares.TimeConstants
 
-
 internal class JeuMock {
     companion object {
         fun default() = Jeu(
@@ -16,7 +15,8 @@ internal class JeuMock {
                 ModuleMock.exterieur(),
                 ModuleMock.interieur1(),
                 ModuleMock.interieur2()
-            )
+            ),
+            terraformation = true
         )
     }
 }

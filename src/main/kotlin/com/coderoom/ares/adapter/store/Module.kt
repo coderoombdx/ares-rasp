@@ -5,14 +5,19 @@ sealed class Module(
     val description: String,
     val idScenario: String,
     val enigmes: List<Enigme>
-)
+) {
+    companion object {
+        const val ID_SCENARIO_1 = "1"
+        const val ID_SCENARIO_2 = "2"
+    }
+}
 
 // Scenario 1
 //
 object ModuleExterieur : Module(
     id = "exterieur",
     description = "Module extérieur",
-    idScenario = "1",
+    idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.CablePhotovoltaique,
         Enigme.PorteExterieur
@@ -22,7 +27,7 @@ object ModuleExterieur : Module(
 object ModuleHallEntree : Module(
     id = "hall_entree",
     description = "Hall d'entrée",
-    idScenario = "1",
+    idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.SegmentHorlogeRadio,
     )
@@ -31,10 +36,9 @@ object ModuleHallEntree : Module(
 object ModuleSecuriteRoot : Module(
     id = "capcom_room",
     description = "Piece Capcom",
-    idScenario = "1",
+    idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.FishingRootTerminalRoot,
-        Enigme.FishingRootDoorStart,
         Enigme.FishingRootDoorOpen,
     )
 )
@@ -42,16 +46,25 @@ object ModuleSecuriteRoot : Module(
 object ModuleLevier : Module(
     id = "levier",
     description = "Derniere salle",
-    idScenario = "1",
+    idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.Levier,
+    )
+)
+
+object ModuleTerraforming : Module(
+    id = "terraforming",
+    description = "Dehors",
+    idScenario = ID_SCENARIO_1,
+    enigmes = listOf(
+        Enigme.Terraforming,
     )
 )
 
 object ModuleRSE : Module(
     id = "secu_root",
     description = "mettre les images dans le bon scope",
-    idScenario = "1",
+    idScenario = ID_SCENARIO_1,
     enigmes = listOf(
 //        Enigme.SegmentRadioHorloge,
     )
@@ -60,7 +73,7 @@ object ModuleRSE : Module(
 object ModuleSecuGPT : Module(
     id = "secu_gpt",
     description = "Hacker un LLM",
-    idScenario = "1",
+    idScenario = ID_SCENARIO_1,
     enigmes = listOf(
     )
 )
@@ -70,7 +83,7 @@ object ModuleSecuGPT : Module(
 object ModuleLumiereStation : Module(
     id = "lumiere_station",
     description = "Mettre la carte RFID sur le tableau de commande",
-    idScenario = "2",
+    idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.InterrupteurGeneral,
     )
@@ -79,7 +92,7 @@ object ModuleLumiereStation : Module(
 object ModuleSystemSolaire : Module(
     id = "systeme_solaire",
     description = "Ordonner les planètes grâces a la composition de l'atmosphère",
-    idScenario = "2",
+    idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.PorteSystemSolaire,
     )
@@ -88,7 +101,7 @@ object ModuleSystemSolaire : Module(
 object ModuleSeulSurMars : Module(
     id = "seul_sur_mars",
     description = "Trouver le code grâce au livre seul sur mars 1976",
-    idScenario = "2",
+    idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.PortePieceSeulSurMars,
     )
@@ -97,7 +110,7 @@ object ModuleSeulSurMars : Module(
 object ModuleSecuritePasswd : Module(
     id = "secu_password",
     description = "La porte s'ouvre au bout de 3 minutes, s'ils donnent le passwd, ils perdent",
-    idScenario = "2",
+    idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.FishingPasswordTerminal,
         Enigme.FishingPasswordDoorStart,
@@ -108,7 +121,7 @@ object ModuleSecuritePasswd : Module(
 object ModuleHautsParleur : Module(
     id = "haut_parleur",
     description = "Un message est diffusé qui donne un code",
-    idScenario = "2",
+    idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.PorteHautParleur
     )

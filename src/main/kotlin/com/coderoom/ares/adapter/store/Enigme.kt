@@ -10,21 +10,22 @@ sealed class Enigme(
     val code: (Jeu) -> String?,
 ) {
     companion object {
-        private const val ID_CABLE_PHOTOVOLTAIQUE = "cable"
-        private const val ID_INTER_GENERAL = "inter_general"
-        private const val ID_PORTE_EXTERIEUR = "porte_exterieure"
-        private const val ID_SEGMENT_HORLOGE_RADIO = "segment_horloge"
-        private const val LEVIER = "levier"
-        private const val ID_FISHING_PASSWORD_TERMINAL = "fishing_password_terminal"
-        private const val ID_FISHING_PASSWORD_DOOR_START = "fishing_password_door_start"
-        private const val ID_FISHING_PASSWORD_DOOR_OPEN = "fishing_password_door_open"
-        private const val ID_FISHING_ROOT_TERMINAL = "fishing_root_terminal"
-        private const val ID_FISHING_ROOT_DOOR_START = "fishing_root_door_open"
-        private const val ID_FISHING_ROOT_DOOR_OPEN = "fishing_root_door_open"
-        private const val ID_SYSTEME_SOLAIRE = "systeme_solaire"
-        private const val ID_SEUL_SUR_MARS = "seul_sur_mars"
-        private const val ID_HAUT_PARLEUR = "haut_parleur"
+        const val ID_CABLE_PHOTOVOLTAIQUE = "cable"
+        const val ID_INTER_GENERAL = "inter_general"
+        const val ID_PORTE_EXTERIEUR = "porte_exterieure"
+        const val ID_SEGMENT_HORLOGE_RADIO = "segment_horloge"
+        const val LEVIER = "levier"
+        const val ID_FISHING_PASSWORD_TERMINAL = "fishing_password_terminal"
+        const val ID_FISHING_PASSWORD_DOOR_START = "fishing_password_door_start"
+        const val ID_FISHING_PASSWORD_DOOR_OPEN = "fishing_password_door_open"
+        const val ID_FISHING_ROOT_TERMINAL = "fishing_root_terminal"
+        const val ID_FISHING_ROOT_DOOR_START = "fishing_root_door_open"
+        const val ID_FISHING_ROOT_DOOR_OPEN = "fishing_root_door_open"
+        const val ID_SYSTEME_SOLAIRE = "systeme_solaire"
+        const val ID_SEUL_SUR_MARS = "seul_sur_mars"
+        const val ID_HAUT_PARLEUR = "haut_parleur"
     }
+
     object CablePhotovoltaique : Enigme(
         id = ID_CABLE_PHOTOVOLTAIQUE,
         description = "Relier le cable des panneaux photovoltaiques sur mars (branche)",
@@ -36,7 +37,7 @@ sealed class Enigme(
         id = ID_INTER_GENERAL,
         description = "Allumer l'interrupteur générale pour eclairer la station RFID Arduino (allume)",
         resolu = false,
-        code = { _ -> "allume" },
+        code = { _ -> "resulu" },
     )
 
     object PorteExterieur : Enigme(
@@ -145,6 +146,16 @@ sealed class Enigme(
         code = { jeu ->
             jeu.fishingDoorStart = jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom
             "declenche"
+        }
+    )
+
+    object Terraforming : Enigme(
+        id = "terraforming",
+        description = "Lancer la terraformation",
+        resolu = false,
+        code = { jeu ->
+            jeu.terraformation = true
+            ""
         }
     )
 
