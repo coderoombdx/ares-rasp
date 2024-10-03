@@ -100,7 +100,7 @@ internal class InMemoryStoreRepositoryShould {
 
             val enigmeResult = inMemoryStoreRepository.setEnigme(Enigme.PorteSystemSolaire.id, "incorrect")
 
-            assertEquals(ResoudreEnigmeResult.Failure("1024"), enigmeResult)
+            assertEquals(ResoudreEnigmeResult.Failure("32675"), enigmeResult)
         }
     }
 

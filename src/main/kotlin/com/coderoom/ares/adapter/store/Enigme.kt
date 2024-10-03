@@ -35,9 +35,13 @@ sealed class Enigme(
 
     object InterrupteurGeneral : Enigme(
         id = ID_INTER_GENERAL,
-        description = "Allumer l'interrupteur générale pour eclairer la station RFID Arduino (allume)",
+        description = "Allumer lj'interrupteur générale pour eclairer la station RFID Arduino (allume)",
         resolu = false,
-        code = { _ -> "resulu" },
+        code = { jeu ->
+            "resolu"
+        },
+        // TODO faiere un poste pour setter à "marche" ou "arret" ou prioritéArduino, le mieux serait de stocker une enum (ON, OFF, DEFAULT)
+        // interrupteurGeneral renverrais donc true si ON Ou DEFAULT=ON
     )
 
     object PorteExterieur : Enigme(
@@ -58,7 +62,6 @@ sealed class Enigme(
         description = "Compter le nombre de segments du radio réveil (4 chiffres)",
         resolu = false,
         code = { jeu ->
-
             val secondesRestantes = jeu.heureMartienneEnSecondes.toLong()
             val heuresRestantes = secondesRestantes / 3600
             val minutesRestantes = (secondesRestantes % 3600) / 60
@@ -98,11 +101,12 @@ sealed class Enigme(
         description = "Enigme technique : quand le joueur entre dans la piece, cela déclenche un chrono",
         resolu = false,
         code = { jeu ->
-            jeu.fishingDoorStart = jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom
+            jeu.timestampFishingMotDePass = (jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom).toLong()
             "declenche"
         }
     )
 
+    // TODO changer le message, la porte s'ouvre selon l'nvie due MDR
     object FishingRootDoorOpen : Enigme(
         id = ID_FISHING_ROOT_DOOR_OPEN,
         description = "Enigme technique : après un temps donné, la porte s'ouvre ()",
@@ -124,7 +128,7 @@ sealed class Enigme(
         description = "Enigme technique : quand le joueur entre dans la piece, cela déclenche un chrono",
         resolu = false,
         code = { jeu ->
-            jeu.fishingDoorStart = jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom
+            jeu.timestampFishingMotDePass = (jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom).toLong()
             "declenche"
         }
     )
@@ -134,7 +138,7 @@ sealed class Enigme(
         description = "Enigme technique : après un temps donné, la porte s'ouvre ()",
         resolu = false,
         code = { jeu ->
-            jeu.fishingDoorStart = jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom
+            jeu.timestampFishingMotDePass = (jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom).toLong()
             "declenche"
         }
     )
@@ -144,7 +148,7 @@ sealed class Enigme(
         description = "Les deux joueurs doivent abaisser un levier pour terraformer Mars",
         resolu = false,
         code = { jeu ->
-            jeu.fishingDoorStart = jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom
+            jeu.timestampFishingMotDePass = (jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom).toLong()
             "declenche"
         }
     )
@@ -153,12 +157,15 @@ sealed class Enigme(
         id = "terraforming",
         description = "Lancer la terraformation",
         resolu = false,
+        // TODO la terraformation reste à false
         code = { jeu ->
-            jeu.terraformation = true
+            jeu.terraformation = "true"
             ""
         }
     )
 
+    // TODO Re voir interrupteur général
+    // TODO changer le boolean terraforming en
     object PortePieceSeulSurMars : Enigme(
         id = ID_SEUL_SUR_MARS,
         description = "Trouver le code P314, L5, M3 (1976)",

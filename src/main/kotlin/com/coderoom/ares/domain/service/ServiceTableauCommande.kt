@@ -12,6 +12,9 @@ class ServiceTableauCommande(
 ) {
     fun setInterGeneral() {
         tableauCommandeRepository.readData()
-        storeRepository.setEnigme(Enigme.InterrupteurGeneral.id, "branche")
+        storeRepository.setInterrupteurGeneral(
+            storeRepository.getJeu().getEnigme(Enigme.ID_INTER_GENERAL)?.resolu == true
+        )
+        // storeRepository.setEnigme(Enigme.InterrupteurGeneral.id, "branche")
     }
 }

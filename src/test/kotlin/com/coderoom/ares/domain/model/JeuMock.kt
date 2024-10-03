@@ -10,13 +10,14 @@ internal class JeuMock {
             derniereAlarme = 0,
             interrupteurGeneral = true,
             heureMartienneEnSecondes = TimeConstants.heureSurMars,
-            fishingDoorStart = 0,
+            timestampFishingUtilisateur = 0L,
+            timestampFishingMotDePass = 0L,
             modules = listOf(
                 ModuleMock.exterieur(),
                 ModuleMock.interieur1(),
                 ModuleMock.interieur2()
             ),
-            terraformation = true
+            terraformation = "true"
         )
     }
 }

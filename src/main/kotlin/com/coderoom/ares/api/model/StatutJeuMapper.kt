@@ -16,9 +16,11 @@ fun Jeu.toApiModel(currentTimeMillis: Long): JeuApiModel {
         compteARebours = this.compteARebours,
         messageAide = this.messageAide,
         derniereAlarme = this.derniereAlarme,
-        interrupteurGeneral = this.interrupteurGeneral || interupteurForce,
+        interrupteurGeneral = this.interrupteurGeneral,
         terraformation = this.terraformation,
         heureMartienne = String.format("%02d:%02d", heuresRestantes, minutesRestantes),
-        modules = this.modules.map { it.toApiModel(this) }
+        modules = this.modules.map { it.toApiModel(this) },
+        timestampFishingMotDePass = this.timestampFishingMotDePass,
+        timestampFishingUtilisateur = this.timestampFishingMotDePass,
     )
 }

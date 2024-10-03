@@ -113,7 +113,6 @@ object ModuleSecuritePasswd : Module(
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.FishingPasswordTerminal,
-        Enigme.FishingPasswordDoorStart,
         Enigme.FishingPasswordDoorOpen,
     )
 )

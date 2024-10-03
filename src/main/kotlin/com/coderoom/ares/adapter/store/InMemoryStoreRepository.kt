@@ -15,7 +15,8 @@ class InMemoryStoreRepository : StoreRepository {
         interrupteurGeneral = StoreSingleton.interrupteurGeneral,
         terraformation = StoreSingleton.terraformation,
         heureMartienneEnSecondes = (TimeConstants.dureeDuJeu - StoreSingleton.compteARebours) + TimeConstants.heureSurMars,
-        fishingDoorStart = Int.MAX_VALUE,
+        timestampFishingUtilisateur = Int.MAX_VALUE.toLong(),
+        timestampFishingMotDePass = Int.MAX_VALUE.toLong(),
         modules = StoreSingleton.modules.map { module ->
             Module(
                 id = module.id,
@@ -35,6 +36,12 @@ class InMemoryStoreRepository : StoreRepository {
 
     override fun setCompteARebours(valeur: Int) {
         StoreSingleton.compteARebours = valeur
+    }
+
+    override fun setInterrupteurGeneral(enMarche: Boolean) {
+        if (enMarche && !StoreSingleton.interrupteurGeneral) {
+            StoreSingleton.interrupteurGeneral = true
+        }
     }
 
     override fun setMessageAide(value: String?) {
@@ -96,8 +103,8 @@ private object StoreSingleton {
     var messageAide: String? = null
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0
-    var interrupteurGeneral: Boolean = true
-    var terraformation: Boolean = false
+    var interrupteurGeneral: Boolean = false
+    var terraformation: String = "false"
     val modules = listOf(
         ModuleExterieur,
         ModuleHallEntree,

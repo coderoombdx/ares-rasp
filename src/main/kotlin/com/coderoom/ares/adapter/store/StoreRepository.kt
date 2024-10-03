@@ -7,6 +7,7 @@ interface StoreRepository {
     fun getJeu(): Jeu
 
     fun setCompteARebours(valeur: Int)
+    fun setInterrupteurGeneral(enMarche: Boolean)
 
     fun setMessageAide(value: String?)
     fun getMessageAideTTL(): Int
