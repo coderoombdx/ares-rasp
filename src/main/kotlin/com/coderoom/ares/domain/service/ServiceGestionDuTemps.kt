@@ -1,6 +1,7 @@
 package com.coderoom.ares.domain.service
 
 import com.coderoom.ares.TimeConstants
+import com.coderoom.ares.adapter.store.Enigme
 import com.coderoom.ares.adapter.store.InMemoryStoreRepository
 import org.springframework.stereotype.Service
 
@@ -52,5 +53,11 @@ class ServiceGestionDuTemps(
 
     fun resetAlarme() {
         repository.resetDerniereAlarme()
+    }
+
+    fun setTerraforming() {
+        if (repository.getJeu().getEnigme(Enigme.ID_TERRAFORMING)?.resolu == true) {
+            repository.setTerraformation(true)
+        }
     }
 }

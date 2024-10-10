@@ -13,9 +13,10 @@ class Scheduler(
     private val serviceTableauCommande: ServiceTableauCommande
 ) {
     @Scheduled(fixedRate = TimeConstants.millisParSeconde, initialDelay = 5 * TimeConstants.millisParSeconde)
-    private fun readAndStoreIncomingData() {
+    private fun scheduler() {
         serviceGestionDuTemps.gereLeTemps()
         serviceTableauCommande.setInterGeneral()
+        serviceGestionDuTemps.setTerraforming()
     }
 }
 

@@ -7,7 +7,7 @@ data class Jeu(
     val derniereAlarme: Int,
     val interrupteurGeneral: Boolean,
     val heureMartienne: String,
-    val terraformation: String,
+    val terraformation: Boolean,
     val modules: List<Module>,
     val timestampFishingMotDePass: Long,
     val timestampFishingUtilisateur: Long,

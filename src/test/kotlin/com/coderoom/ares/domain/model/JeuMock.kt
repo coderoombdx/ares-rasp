@@ -17,7 +17,7 @@ internal class JeuMock {
                 ModuleMock.interieur1(),
                 ModuleMock.interieur2()
             ),
-            terraformation = "true"
+            terraformation = true
         )
     }
 }

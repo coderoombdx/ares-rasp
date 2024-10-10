@@ -8,6 +8,7 @@ interface StoreRepository {
 
     fun setCompteARebours(valeur: Int)
     fun setInterrupteurGeneral(enMarche: Boolean)
+    fun setTerraformation(enCours: Boolean)
 
     fun setMessageAide(value: String?)
     fun getMessageAideTTL(): Int

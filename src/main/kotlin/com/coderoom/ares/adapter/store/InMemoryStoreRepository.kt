@@ -44,6 +44,12 @@ class InMemoryStoreRepository : StoreRepository {
         }
     }
 
+    override fun setTerraformation(enCours: Boolean) {
+        if (enCours && !StoreSingleton.terraformation) {
+            StoreSingleton.terraformation = true
+        }
+    }
+
     override fun setMessageAide(value: String?) {
         StoreSingleton.messageAide = value
         if (value == null) {
@@ -104,7 +110,7 @@ private object StoreSingleton {
     var messageAideTTL: Int = 0
     var derniereAlarme: Int = 0
     var interrupteurGeneral: Boolean = false
-    var terraformation: String = "false"
+    var terraformation: Boolean = false
     val modules = listOf(
         ModuleExterieur,
         ModuleHallEntree,

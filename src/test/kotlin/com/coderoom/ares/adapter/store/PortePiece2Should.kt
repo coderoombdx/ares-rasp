@@ -17,7 +17,7 @@ class PortePiece2Should {
             timestampFishingUtilisateur = 0L,
             timestampFishingMotDePass = 0L,
             modules = listOf(),
-            terraformation = "false"
+            terraformation = false
         )
     }
 }

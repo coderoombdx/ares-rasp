@@ -15,6 +15,5 @@ class ServiceTableauCommande(
         storeRepository.setInterrupteurGeneral(
             storeRepository.getJeu().getEnigme(Enigme.ID_INTER_GENERAL)?.resolu == true
         )
-        // storeRepository.setEnigme(Enigme.InterrupteurGeneral.id, "branche")
     }
 }

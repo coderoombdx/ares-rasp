@@ -5,7 +5,7 @@ data class Jeu(
     val messageAide: String?,
     val derniereAlarme: Int,
     var interrupteurGeneral: Boolean,
-    var terraformation: String = "EN_COURS", // TODO SUCCES ou ECHEC
+    var terraformation: Boolean,
     val heureMartienneEnSecondes: Int,
     var timestampFishingMotDePass: Long,
     var timestampFishingUtilisateur: Long,

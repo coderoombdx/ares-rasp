@@ -9,6 +9,7 @@ sealed class Enigme(
     var resolu: Boolean,
     val code: (Jeu) -> String?,
 ) {
+
     companion object {
         const val ID_CABLE_PHOTOVOLTAIQUE = "cable"
         const val ID_INTER_GENERAL = "inter_general"
@@ -16,14 +17,14 @@ sealed class Enigme(
         const val ID_SEGMENT_HORLOGE_RADIO = "segment_horloge"
         const val LEVIER = "levier"
         const val ID_FISHING_PASSWORD_TERMINAL = "fishing_password_terminal"
-        const val ID_FISHING_PASSWORD_DOOR_START = "fishing_password_door_start"
         const val ID_FISHING_PASSWORD_DOOR_OPEN = "fishing_password_door_open"
         const val ID_FISHING_ROOT_TERMINAL = "fishing_root_terminal"
-        const val ID_FISHING_ROOT_DOOR_START = "fishing_root_door_open"
         const val ID_FISHING_ROOT_DOOR_OPEN = "fishing_root_door_open"
         const val ID_SYSTEME_SOLAIRE = "systeme_solaire"
         const val ID_SEUL_SUR_MARS = "seul_sur_mars"
         const val ID_HAUT_PARLEUR = "haut_parleur"
+        const val ID_TERRAFORMING = "terraforming"
+
     }
 
     object CablePhotovoltaique : Enigme(
@@ -96,20 +97,9 @@ sealed class Enigme(
         code = { _ -> "Admin-ares" }
     )
 
-    object FishingRootDoorStart : Enigme(
-        id = ID_FISHING_ROOT_DOOR_START,
-        description = "Enigme technique : quand le joueur entre dans la piece, cela déclenche un chrono",
-        resolu = false,
-        code = { jeu ->
-            jeu.timestampFishingMotDePass = (jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom).toLong()
-            "declenche"
-        }
-    )
-
-    // TODO changer le message, la porte s'ouvre selon l'nvie due MDR
     object FishingRootDoorOpen : Enigme(
         id = ID_FISHING_ROOT_DOOR_OPEN,
-        description = "Enigme technique : après un temps donné, la porte s'ouvre ()",
+        description = "Enigme technique : quand le joueur entre dans la piece, cela déclenche un chrono",
         resolu = false,
         code = { _ ->
             ""
@@ -123,24 +113,11 @@ sealed class Enigme(
         code = { _ -> "A&oYGrpkD#99mqZ" }
     )
 
-    object FishingPasswordDoorStart : Enigme(
-        id = ID_FISHING_PASSWORD_DOOR_START,
-        description = "Enigme technique : quand le joueur entre dans la piece, cela déclenche un chrono",
-        resolu = false,
-        code = { jeu ->
-            jeu.timestampFishingMotDePass = (jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom).toLong()
-            "declenche"
-        }
-    )
-
     object FishingPasswordDoorOpen : Enigme(
         id = ID_FISHING_PASSWORD_DOOR_OPEN,
-        description = "Enigme technique : après un temps donné, la porte s'ouvre ()",
+        description = "Enigme technique : le maitre du jeu déverrouille la porte quand il le juge opportun",
         resolu = false,
-        code = { jeu ->
-            jeu.timestampFishingMotDePass = (jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom).toLong()
-            "declenche"
-        }
+        code = { _ -> "declenche" }
     )
 
     object Levier : Enigme(
@@ -154,12 +131,11 @@ sealed class Enigme(
     )
 
     object Terraforming : Enigme(
-        id = "terraforming",
+        id = ID_TERRAFORMING,
         description = "Lancer la terraformation",
         resolu = false,
         // TODO la terraformation reste à false
         code = { jeu ->
-            jeu.terraformation = "true"
             ""
         }
     )
