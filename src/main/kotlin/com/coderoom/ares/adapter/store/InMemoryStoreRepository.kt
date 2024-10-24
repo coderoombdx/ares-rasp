@@ -1,10 +1,10 @@
 package com.coderoom.ares.adapter.store
 
 import com.coderoom.ares.TimeConstants
-import com.coderoom.ares.domain.model.Enigme
 import com.coderoom.ares.domain.model.Jeu
-import com.coderoom.ares.domain.model.Module
 import org.springframework.stereotype.Repository
+import com.coderoom.ares.domain.model.Enigme as EnigmeModel
+import com.coderoom.ares.domain.model.Module as ModuleModel
 
 @Repository
 class InMemoryStoreRepository : StoreRepository {
@@ -18,12 +18,12 @@ class InMemoryStoreRepository : StoreRepository {
         timestampFishingUtilisateur = Int.MAX_VALUE.toLong(),
         timestampFishingMotDePass = Int.MAX_VALUE.toLong(),
         modules = StoreSingleton.modules.map { module ->
-            Module(
+            ModuleModel(
                 id = module.id,
                 description = module.description,
                 idScenario = module.idScenario,
                 enigmes = module.enigmes.map { enigme ->
-                    Enigme(
+                    EnigmeModel(
                         id = enigme.id,
                         description = enigme.description,
                         resolu = enigme.resolu,
@@ -39,15 +39,11 @@ class InMemoryStoreRepository : StoreRepository {
     }
 
     override fun setInterrupteurGeneral(enMarche: Boolean) {
-        if (enMarche && !StoreSingleton.interrupteurGeneral) {
-            StoreSingleton.interrupteurGeneral = true
-        }
+        StoreSingleton.interrupteurGeneral = enMarche
     }
 
     override fun setTerraformation(enCours: Boolean) {
-        if (enCours && !StoreSingleton.terraformation) {
-            StoreSingleton.terraformation = true
-        }
+        StoreSingleton.terraformation = enCours
     }
 
     override fun setMessageAide(value: String?) {
@@ -81,11 +77,11 @@ class InMemoryStoreRepository : StoreRepository {
             ResoudreEnigmeResult.NotFound
         } else {
             val solution = enigme.code(getJeu())
-            if (solution == solutionProposee) {
+            if (solution.filter { it.compareTo(solutionProposee, true) == 0 }.any()) {
                 enigme.resolu = true
                 ResoudreEnigmeResult.Success
             } else {
-                ResoudreEnigmeResult.Failure(solution = solution.orEmpty())
+                ResoudreEnigmeResult.Failure(solution = solution.joinToString(separator = ","))
             }
         }
     }

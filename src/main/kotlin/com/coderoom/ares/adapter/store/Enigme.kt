@@ -1,13 +1,12 @@
 package com.coderoom.ares.adapter.store
 
-import com.coderoom.ares.TimeConstants
 import com.coderoom.ares.domain.model.Jeu
 
 sealed class Enigme(
     val id: String,
     val description: String,
     var resolu: Boolean,
-    val code: (Jeu) -> String?,
+    val code: (Jeu) -> List<String>,
 ) {
 
     companion object {
@@ -31,18 +30,14 @@ sealed class Enigme(
         id = ID_CABLE_PHOTOVOLTAIQUE,
         description = "Relier le cable des panneaux photovoltaiques sur mars (branche)",
         resolu = false,
-        code = { _ -> "branche" },
+        code = { listOf("branche") },
     )
 
     object InterrupteurGeneral : Enigme(
         id = ID_INTER_GENERAL,
         description = "Allumer lj'interrupteur générale pour eclairer la station RFID Arduino (allume)",
         resolu = false,
-        code = { jeu ->
-            "resolu"
-        },
-        // TODO faiere un poste pour setter à "marche" ou "arret" ou prioritéArduino, le mieux serait de stocker une enum (ON, OFF, DEFAULT)
-        // interrupteurGeneral renverrais donc true si ON Ou DEFAULT=ON
+        code = { listOf("resolu") },
     )
 
     object PorteExterieur : Enigme(
@@ -51,9 +46,9 @@ sealed class Enigme(
         resolu = false,
         code = { jeu ->
             if (jeu.getEnigme(ID_CABLE_PHOTOVOLTAIQUE)?.resolu == false) {
-                null
+                emptyList()
             } else {
-                "phobos"
+                listOf("phobos")
             }
         }
     )
@@ -67,7 +62,7 @@ sealed class Enigme(
             val heuresRestantes = secondesRestantes / 3600
             val minutesRestantes = (secondesRestantes % 3600) / 60
 
-            String.format("%02d:%02d", heuresRestantes, minutesRestantes)
+            listOf(String.format("%02d:%02d", heuresRestantes, minutesRestantes)
                 .toList()
                 .joinToString(separator = "") {
                     when (it) {
@@ -80,6 +75,7 @@ sealed class Enigme(
                         else -> ""
                     }
                 }
+            )
         }
     )
 
@@ -87,72 +83,62 @@ sealed class Enigme(
         id = ID_SYSTEME_SOLAIRE,
         description = "Tape le 32675 pour sortir de la piece (32675)",
         resolu = false,
-        code = { _ -> "32675" }
+        code = { listOf("32675") }
     )
 
     object FishingRootTerminalRoot : Enigme(
         id = ID_FISHING_ROOT_TERMINAL,
         description = "Si les joueurs saisissent le user admin, ils ont perdu (Admin-ares)",
         resolu = false,
-        code = { _ -> "Admin-ares" }
+        code = { listOf("Admin-ares") }
     )
 
     object FishingRootDoorOpen : Enigme(
         id = ID_FISHING_ROOT_DOOR_OPEN,
         description = "Enigme technique : quand le joueur entre dans la piece, cela déclenche un chrono",
         resolu = false,
-        code = { _ ->
-            ""
-        }
+        code = { emptyList() }
     )
 
     object FishingPasswordTerminal : Enigme(
         id = ID_FISHING_PASSWORD_TERMINAL,
         description = "Si les joueurs saisissent le password, ils ont perdu (A&oYGrpkD#99mqZ)",
         resolu = false,
-        code = { _ -> "A&oYGrpkD#99mqZ" }
+        code = { listOf("A&oYGrpkD#99mqZ") }
     )
 
     object FishingPasswordDoorOpen : Enigme(
         id = ID_FISHING_PASSWORD_DOOR_OPEN,
         description = "Enigme technique : le maitre du jeu déverrouille la porte quand il le juge opportun",
         resolu = false,
-        code = { _ -> "declenche" }
+        code = { listOf("declenche") }
     )
 
     object Levier : Enigme(
         id = LEVIER,
         description = "Les deux joueurs doivent abaisser un levier pour terraformer Mars",
         resolu = false,
-        code = { jeu ->
-            jeu.timestampFishingMotDePass = (jeu.compteARebours + TimeConstants.delaiOuverturePorteCapCom).toLong()
-            "declenche"
-        }
+        code = { listOf("declenche") }
     )
 
     object Terraforming : Enigme(
         id = ID_TERRAFORMING,
         description = "Lancer la terraformation",
         resolu = false,
-        // TODO la terraformation reste à false
-        code = { jeu ->
-            ""
-        }
+        code = { emptyList() }
     )
 
-    // TODO Re voir interrupteur général
-    // TODO changer le boolean terraforming en
     object PortePieceSeulSurMars : Enigme(
         id = ID_SEUL_SUR_MARS,
         description = "Trouver le code P314, L5, M3 (1976)",
         resolu = false,
-        code = { _ -> "1976" }
+        code = { listOf("1976") }
     )
 
     object PorteHautParleur : Enigme(
         id = ID_HAUT_PARLEUR,
         description = "Trouver le mot sur les hauts parleurs (oxygene)",
         resolu = false,
-        code = { _ -> "oxygene" }
+        code = { listOf("oxygene", "oxygen") }
     )
 }

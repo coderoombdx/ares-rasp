@@ -1,6 +1,7 @@
 package com.coderoom.ares.adapter.store
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class PorteExterieurShould {
@@ -11,7 +12,7 @@ class PorteExterieurShould {
         val jeu = storeRepository.getJeu()
         jeu.getEnigme(Enigme.CablePhotovoltaique.id)?.resolu = true
 
-        assertEquals("phobos", Enigme.PorteExterieur.code(jeu))
+        assertEquals(listOf("phobos"), Enigme.PorteExterieur.code(jeu))
     }
 
     @Test
@@ -20,6 +21,6 @@ class PorteExterieurShould {
         val jeu = storeRepository.getJeu()
         jeu.getEnigme(Enigme.CablePhotovoltaique.id)?.resolu = false
 
-        assertEquals(null, Enigme.PorteExterieur.code(jeu))
+        assertTrue(Enigme.PorteExterieur.code(jeu).isEmpty())
     }
 }

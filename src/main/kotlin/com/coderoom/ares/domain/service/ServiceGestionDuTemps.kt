@@ -56,8 +56,8 @@ class ServiceGestionDuTemps(
     }
 
     fun setTerraforming() {
-        if (repository.getJeu().getEnigme(Enigme.ID_TERRAFORMING)?.resolu == true) {
-            repository.setTerraformation(true)
-        }
+        repository.setTerraformation(
+            repository.getJeu().getEnigme(Enigme.ID_TERRAFORMING)?.resolu == true
+        )
     }
 }
