@@ -8,5 +8,5 @@ fun Enigme.toApiModel(jeu: Jeu) = EnigmeApiModel(
     id = this.id,
     description = this.description,
     resolu = this.resolu,
-    code = this.code(jeu)
+    code = this.code(jeu).firstOrNull() ?: ""
 )

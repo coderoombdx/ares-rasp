@@ -39,7 +39,6 @@ object ModuleSecuriteRoot : Module(
     idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.FishingRootTerminalRoot,
-        Enigme.FishingRootDoorOpen,
     )
 )
 
@@ -113,7 +112,6 @@ object ModuleSecuritePasswd : Module(
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.FishingPasswordTerminal,
-        Enigme.FishingPasswordDoorOpen,
     )
 )
 

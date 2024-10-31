@@ -4,5 +4,5 @@ data class Enigme(
     val id: String,
     val description: String,
     val resolu: Boolean,
-    val code: List<String>
+    val code: String
 )

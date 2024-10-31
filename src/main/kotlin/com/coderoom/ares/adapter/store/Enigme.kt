@@ -16,9 +16,7 @@ sealed class Enigme(
         const val ID_SEGMENT_HORLOGE_RADIO = "segment_horloge"
         const val LEVIER = "levier"
         const val ID_FISHING_PASSWORD_TERMINAL = "fishing_password_terminal"
-        const val ID_FISHING_PASSWORD_DOOR_OPEN = "fishing_password_door_open"
         const val ID_FISHING_ROOT_TERMINAL = "fishing_root_terminal"
-        const val ID_FISHING_ROOT_DOOR_OPEN = "fishing_root_door_open"
         const val ID_SYSTEME_SOLAIRE = "systeme_solaire"
         const val ID_SEUL_SUR_MARS = "seul_sur_mars"
         const val ID_HAUT_PARLEUR = "haut_parleur"
@@ -93,25 +91,11 @@ sealed class Enigme(
         code = { listOf("Admin-ares") }
     )
 
-    object FishingRootDoorOpen : Enigme(
-        id = ID_FISHING_ROOT_DOOR_OPEN,
-        description = "Enigme technique : quand le joueur entre dans la piece, cela déclenche un chrono",
-        resolu = false,
-        code = { emptyList() }
-    )
-
     object FishingPasswordTerminal : Enigme(
         id = ID_FISHING_PASSWORD_TERMINAL,
         description = "Si les joueurs saisissent le password, ils ont perdu (A&oYGrpkD#99mqZ)",
         resolu = false,
         code = { listOf("A&oYGrpkD#99mqZ") }
-    )
-
-    object FishingPasswordDoorOpen : Enigme(
-        id = ID_FISHING_PASSWORD_DOOR_OPEN,
-        description = "Enigme technique : le maitre du jeu déverrouille la porte quand il le juge opportun",
-        resolu = false,
-        code = { listOf("declenche") }
     )
 
     object Levier : Enigme(
