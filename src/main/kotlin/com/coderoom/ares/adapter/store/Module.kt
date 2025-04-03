@@ -16,7 +16,7 @@ sealed class Module(
 //
 object ModuleExterieur : Module(
     id = "exterieur",
-    description = "Module extérieur",
+    description = "A l'extérieur de la station",
     idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.CablePhotovoltaique,
@@ -26,7 +26,7 @@ object ModuleExterieur : Module(
 
 object ModuleHallEntree : Module(
     id = "hall_entree",
-    description = "Hall d'entrée",
+    description = "A13 Quest Airlock",
     idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.SegmentHorlogeRadio,
@@ -35,7 +35,7 @@ object ModuleHallEntree : Module(
 
 object ModuleSecuriteRoot : Module(
     id = "capcom_room",
-    description = "Piece Capcom",
+    description = "A28 Mission control",
     idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.FishingRootTerminalRoot,
@@ -44,7 +44,7 @@ object ModuleSecuriteRoot : Module(
 
 object ModuleLevier : Module(
     id = "levier",
-    description = "Derniere salle",
+    description = "A35 Terraforming room",
     idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.Levier,
@@ -53,27 +53,10 @@ object ModuleLevier : Module(
 
 object ModuleTerraforming : Module(
     id = "terraforming",
-    description = "Dehors",
+    description = "A l'extérieur de la station",
     idScenario = ID_SCENARIO_1,
     enigmes = listOf(
         Enigme.Terraforming,
-    )
-)
-
-object ModuleRSE : Module(
-    id = "secu_root",
-    description = "mettre les images dans le bon scope",
-    idScenario = ID_SCENARIO_1,
-    enigmes = listOf(
-//        Enigme.SegmentRadioHorloge,
-    )
-)
-
-object ModuleSecuGPT : Module(
-    id = "secu_gpt",
-    description = "Hacker un LLM",
-    idScenario = ID_SCENARIO_1,
-    enigmes = listOf(
     )
 )
 
@@ -81,16 +64,25 @@ object ModuleSecuGPT : Module(
 //
 object ModuleLumiereStation : Module(
     id = "lumiere_station",
-    description = "Mettre la carte RFID sur le tableau de commande",
+    description = "B18",
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.InterrupteurGeneral,
     )
 )
 
+object ModulePlanetarium : Module(
+    id = "planetarium",
+    description = "B19",
+    idScenario = ID_SCENARIO_2,
+    enigmes = listOf(
+        Enigme.PorteExterieur,
+    )
+)
+
 object ModuleSystemSolaire : Module(
     id = "systeme_solaire",
-    description = "Ordonner les planètes grâces a la composition de l'atmosphère",
+    description = "B22 Observatory",
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.PorteSystemSolaire,
@@ -99,7 +91,7 @@ object ModuleSystemSolaire : Module(
 
 object ModuleSeulSurMars : Module(
     id = "seul_sur_mars",
-    description = "Trouver le code grâce au livre seul sur mars 1976",
+    description = "B37 Leisure room",
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.PortePieceSeulSurMars,
@@ -108,7 +100,7 @@ object ModuleSeulSurMars : Module(
 
 object ModuleSecuritePasswd : Module(
     id = "secu_password",
-    description = "La porte s'ouvre au bout de 3 minutes, s'ils donnent le passwd, ils perdent",
+    description = "B48 Secondary mission control",
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.FishingPasswordTerminal,
@@ -117,10 +109,18 @@ object ModuleSecuritePasswd : Module(
 
 object ModuleHautsParleur : Module(
     id = "haut_parleur",
-    description = "Un message est diffusé qui donne un code",
+    description = "B52 SETI telescope",
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.PorteHautParleur
     )
 )
 
+object ModuleTerraforming2 : Module(
+    id = "terraforming",
+    description = "B69 Terraforming room 2",
+    idScenario = ID_SCENARIO_2,
+    enigmes = listOf(
+        Enigme.PorteHautParleur
+    )
+)

@@ -115,9 +115,11 @@ private object StoreSingleton {
         ModuleTerraforming,
 
         ModuleLumiereStation,
+        ModulePlanetarium,
         ModuleSystemSolaire,
         ModuleSeulSurMars,
         ModuleSecuritePasswd,
         ModuleHautsParleur,
+        ModuleTerraforming2
     )
 }

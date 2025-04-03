@@ -33,7 +33,7 @@ sealed class Enigme(
 
     object InterrupteurGeneral : Enigme(
         id = ID_INTER_GENERAL,
-        description = "Allumer lj'interrupteur générale pour eclairer la station RFID Arduino (allume)",
+        description = "Placer la carte RFID pour Allumer la station (allume)",
         resolu = false,
         code = { listOf("resolu") },
     )

@@ -1,5 +1,6 @@
 package com.coderoom.ares
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
@@ -13,6 +14,7 @@ class Conf(
     )
 
     data class Arduino(
+        @Value("\${ares.arduino.port}")
         val port: String = "COM2"
     )
 }
