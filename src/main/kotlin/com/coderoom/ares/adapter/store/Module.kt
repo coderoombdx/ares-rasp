@@ -38,7 +38,8 @@ object ModuleSecuriteRoot : Module(
     description = "A28 Mission control",
     idScenario = ID_SCENARIO_1,
     enigmes = listOf(
-        Enigme.FishingRootTerminalRoot,
+        Enigme.FishingRootTerminal,
+        Enigme.FishingRootDoor,
     )
 )
 
@@ -104,6 +105,7 @@ object ModuleSecuritePasswd : Module(
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.FishingPasswordTerminal,
+        Enigme.FishingPasswordDoor,
     )
 )
 

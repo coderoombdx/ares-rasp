@@ -16,7 +16,9 @@ sealed class Enigme(
         const val ID_SEGMENT_HORLOGE_RADIO = "segment_horloge"
         const val LEVIER = "levier"
         const val ID_FISHING_PASSWORD_TERMINAL = "fishing_password_terminal"
+        const val ID_FISHING_PASSWORD_DOOR = "fishing_password_door"
         const val ID_FISHING_ROOT_TERMINAL = "fishing_root_terminal"
+        const val ID_FISHING_ROOT_DOOR = "fishing_root_door"
         const val ID_SYSTEME_SOLAIRE = "systeme_solaire"
         const val ID_SEUL_SUR_MARS = "seul_sur_mars"
         const val ID_HAUT_PARLEUR = "haut_parleur"
@@ -84,18 +86,32 @@ sealed class Enigme(
         code = { listOf("32675") }
     )
 
-    object FishingRootTerminalRoot : Enigme(
+    object FishingRootTerminal : Enigme(
         id = ID_FISHING_ROOT_TERMINAL,
         description = "Si les joueurs saisissent le user admin, ils ont perdu (Admin-ares)",
+        resolu = true,
+        code = { listOf("!Admin-ares") }
+    )
+
+    object FishingRootDoor : Enigme(
+        id = ID_FISHING_ROOT_DOOR,
+        description = "Ouverture de la porte sécurité par le MDJ",
         resolu = false,
-        code = { listOf("Admin-ares") }
+        code = { listOf("door") }
     )
 
     object FishingPasswordTerminal : Enigme(
         id = ID_FISHING_PASSWORD_TERMINAL,
         description = "Si les joueurs saisissent le password, ils ont perdu (A&oYGrpkD#99mqZ)",
         resolu = false,
-        code = { listOf("A&oYGrpkD#99mqZ") }
+        code = { listOf("!A&oYGrpkD#99mqZ") }
+    )
+
+    object FishingPasswordDoor : Enigme(
+        id = ID_FISHING_PASSWORD_DOOR,
+        description = "Ouverture de la porte sécurité par le MDJ",
+        resolu = false,
+        code = { listOf("door") }
     )
 
     object Levier : Enigme(
@@ -109,7 +125,7 @@ sealed class Enigme(
         id = ID_TERRAFORMING,
         description = "Lancer la terraformation",
         resolu = false,
-        code = { emptyList() }
+        code = { listOf("terraforming") }
     )
 
     object PortePieceSeulSurMars : Enigme(

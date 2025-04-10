@@ -77,10 +77,17 @@ class InMemoryStoreRepository : StoreRepository {
             ResoudreEnigmeResult.NotFound
         } else {
             val solution = enigme.code(getJeu())
-            if (solution.filter { it.compareTo(solutionProposee, true) == 0 }.any()) {
+            if (solution.any {
+                    if (it.startsWith("!")) {
+                        it.substring(1).compareTo(solutionProposee, true) != 0
+                    } else {
+                        it.compareTo(solutionProposee, true) == 0
+                    }
+                }) {
                 enigme.resolu = true
                 ResoudreEnigmeResult.Success
             } else {
+                enigme.resolu = false
                 ResoudreEnigmeResult.Failure(solution = solution.joinToString(separator = ","))
             }
         }
