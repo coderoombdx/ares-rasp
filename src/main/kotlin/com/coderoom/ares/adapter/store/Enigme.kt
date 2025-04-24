@@ -103,7 +103,7 @@ sealed class Enigme(
     object FishingPasswordTerminal : Enigme(
         id = ID_FISHING_PASSWORD_TERMINAL,
         description = "Si les joueurs saisissent le password, ils ont perdu (A&oYGrpkD#99mqZ)",
-        resolu = false,
+        resolu = true,
         code = { listOf("!A&oYGrpkD#99mqZ") }
     )
 

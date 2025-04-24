@@ -69,21 +69,13 @@ object ModuleLumiereStation : Module(
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.InterrupteurGeneral,
-    )
-)
-
-object ModulePlanetarium : Module(
-    id = "planetarium",
-    description = "B19",
-    idScenario = ID_SCENARIO_2,
-    enigmes = listOf(
         Enigme.PorteExterieur,
     )
 )
 
 object ModuleSystemSolaire : Module(
     id = "systeme_solaire",
-    description = "B22 Observatory",
+    description = "B19",
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.PorteSystemSolaire,
@@ -92,7 +84,7 @@ object ModuleSystemSolaire : Module(
 
 object ModuleSeulSurMars : Module(
     id = "seul_sur_mars",
-    description = "B37 Leisure room",
+    description = "B22 Observatory",
     idScenario = ID_SCENARIO_2,
     enigmes = listOf(
         Enigme.PortePieceSeulSurMars,
